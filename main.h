@@ -16,9 +16,7 @@ class Main : public CBase_Main {
   int value;
 
   /// Private Member Functions ///
-  void startArrayDisplay(void (Main::*cbFunc)(void), char* prefix);
   void startNextPhase();
-  void exit();
 
  public:
   /// Constructors ///
@@ -26,7 +24,6 @@ class Main : public CBase_Main {
   Main(CkMigrateMessage* msg);
 
   /// Entry Methods ///
-  void arrayDisplayFinished();
   void terminar(int []);
 };
 

@@ -8,7 +8,6 @@ mainmodule main {
 
   mainchare Main {
     entry Main(CkArgMsg* msg);
-    entry void arrayDisplayFinished();
     entry void terminar(int values[numElements]);
   };
 

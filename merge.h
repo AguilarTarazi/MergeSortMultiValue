@@ -7,15 +7,14 @@ class Merge : public CBase_Merge {
   /// Member Variables (Object State) ///
   int myValue, newPos, newcantChares, phase, tempo, indexSave, posicion, posicionDer;
   int indexLlamoIzq, accion, primero, cantFases, elementos;
-  bool activo;
+  bool activo,noValues;
   int *myValues;
-  int *tempos;
+  int comparar[15];
   int numElementsLocal;
   /// Member Functions (private) ///
   void sort(int,int,int[]);
   void merging(int,int,int,int[]);
   void bubbleSort(int[],int);
-
 
  public:
   /// Constructors ///
@@ -23,24 +22,13 @@ class Merge : public CBase_Merge {
   Merge(CkMigrateMessage *msg);
 
   /// Entry Methods ///
-  void initPhase(int,int,int,int[],int);
-  void setPhase(int);
+  void initPhase(int,int,int,int[],int,int);
   void startCompare(int,int,bool,int,int);
-  void startComparePhase(int,int,bool,int,int,int);
   void requestSwap(int,int,int,int);
   void acceptSwap(int,int,int [],int);
-  void cambiarPosicion(int,bool);
-  void solicitarPosicionDer(int,int,int);
-  void cambiarPosicionDer(int,int);
   void denySwap(int,int,int [],int);
   void saveValue(int [],int,bool);
-  // void saveTempo(int,int []);
   void check(int);
-  void imprimir(char prefix[10]);
-  void displayValue(int prefixLen, char* prefix);
-
-  //void compareData(int [],int);
-
 };
 
 

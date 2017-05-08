@@ -37,10 +37,10 @@ Main::Main(CkArgMsg* msg) {
     values = (int *)malloc(sizeof(int)*numElements);
     for(int i=0;i<numElements;i++){
         value = i; //Ascendente
-        // value = rand() % 100; //Aleatorio
+        value = rand() % 10000; //Aleatorio
         // value = numElements-i; //Descendente
         values[i] = value;
-        CkPrintf("Before: Merge[%d]: %d\n",i,values[i]);
+        // CkPrintf("Before: Merge[%d]: %d\n",i,values[i]);
     }
     // We are done with msg so delete it.
     delete msg;
@@ -51,13 +51,8 @@ Main::Main(CkArgMsg* msg) {
     mainProxy = thisProxy;
 
     // Create the array of Merge chare objects.
-    mergeArray = CProxy_Merge::ckNew(numElements);
+    mergeArray = CProxy_Merge::ckNew(cantChares);
 
-    // Display the array and then start the first phase
-    // mergeArray.displayValue(7,str);
-    // arrayDisplayFinished();
-    // char str[15] = "Before";
-    // startArrayDisplay(&Main::startNextPhase, str);
     startNextPhase();
 }
 
@@ -67,52 +62,23 @@ Main::Main(CkMigrateMessage* msg) { }
 
 void Main::startNextPhase() {
     // Comienzan su fase (divide) solo el primero y el del medio.
-    int valuesIzq[numElements/2];
-    int valuesDer[numElements-numElements/2];
+    int *valuesIzq = (int *)malloc(sizeof(int)*(numElements/2));
+    int *valuesDer = (int *)malloc(sizeof(int)*(numElements-numElements/2));
     memcpy(valuesIzq,values,(numElements/2)*sizeof(int));
     memcpy(valuesDer,values+numElements/2,(numElements-numElements/2)*sizeof(int));
-
-    // for(int i=0;i<numElements/2;i++)
-    //     CkPrintf("valuesIzq[%d]=%d\n",i,valuesIzq[i]);
-    // CkPrintf("\n");
-    // for(int j=0;j<numElements-numElements/2;j++)
-    //     CkPrintf("valuesDer[%d]=%d\n",j,valuesDer[j]);
-
-    // CkPrintf("TAM IZQ en MAIN: %d\n", sizeof valuesIzq / sizeof *valuesIzq);
-    // CkPrintf("TAM DER en MAIN: %d\n", sizeof valuesDer / sizeof *valuesDer);
-    // Reciben como argumento el indice del "ultimo elemento de su array"
     inicio=CkWallTimer();	//Toma tiempo de inicio
-    mergeArray[0].initPhase(cantChares/2-1,cantChares-1,0,valuesIzq,sizeof valuesIzq / sizeof *valuesIzq);
-    mergeArray[cantChares/2].initPhase(cantChares-1,-1,0,valuesDer,sizeof valuesDer / sizeof *valuesDer);
-}
-
-void Main::startArrayDisplay(void (Main::*cbFunc)(void), char* prefix) {
-    // Set the function to execute when the display process is over
-    //   (postDisplayFunc) and start displaying the values.
-    postDisplayFunc = cbFunc;
-    mergeArray[0].displayValue(strlen(prefix)+1, prefix);
+    mergeArray[0].initPhase(cantChares/2-1,cantChares-1,0,valuesIzq,numElements/2, cantChares/2);
+    mergeArray[cantChares/2].initPhase(cantChares-1,-1,0,valuesDer,numElements-numElements/2, -1);
 }
 
 void Main::terminar(int valuesSort[]) {
 
     fin=CkWallTimer();		//Toma tiempo de fin
-    // char str[15] = "After ";
     for(int i=0;i<numElements;i++){
-        CkPrintf("After: Merge[%d]=%d\n",i,valuesSort[i]);
+        // CkPrintf("After: Merge[%d]=%d\n",i,valuesSort[i]);
     }
     // Exit the program
     CkPrintf("\nTiempo: %f\n\n",fin-inicio);	//Imprime tiempos
-    CkExit();
-}
-
-void Main::arrayDisplayFinished() {
-    // If there is a post-display function to call, call it.
-    if (postDisplayFunc != NULL) (this->*postDisplayFunc)();
-}
-
-void Main::exit() {
-    // Exit the program
-    CkPrintf("Tiempo: %f\n",fin-inicio);	//Imprime tiempos
     CkExit();
 }
 
