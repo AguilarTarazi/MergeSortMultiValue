@@ -15,6 +15,7 @@ class Merge : public CBase_Merge {
   void sort(int,int,int[]);
   void merging(int,int,int,int[]);
   void bubbleSort(int[],int);
+  void insertionSort();
 
  public:
   /// Constructors ///

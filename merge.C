@@ -69,7 +69,7 @@ void Merge::initPhase(int pos, int posDer, int phaseN, int values[],int tam,int 
         posicion = pos; //BORRARLO
         posicionDer = posDer; // VER SI VA ACA
         posicion = posicionDer;
-        // CkPrintf("[%d] ********************************elementos:%d\n",thisIndex,elementos);
+        CkPrintf("[%d] ********************************elementos:%d\n",thisIndex,elementos);
         myValues = (int *)malloc(sizeof(int)*elementos);
         memcpy(myValues,values,(elementos)*sizeof(int));        //Se copian los valores en variable local
         noValues=false;
@@ -121,9 +121,9 @@ void Merge::startCompare(int indexDer, int indexS, bool seMovioIndexDer, int pos
 void Merge::requestSwap(int phaseN, int valueN, int indexIzq,int lastValueN){
     // CkPrintf("[%d] en requestSwap con phase:%d y phaseN:%d, activo=%d\n",thisIndex,phase,phaseN, activo);
     // if(myValues==NULL) CkPrintf("[%d] ESS NUUUUUULLLL con elementos:%d\n",thisIndex,elementos);
-    if(phase == phaseN && !noValues){
+    // if(phase == phaseN && !noValues){
     // if(phase == phaseN && myValues!=NULL){
-    // if(((phase == phaseN && activo) || (phase!=phaseN && !activo)) && myValues!=NULL){
+    if((phase == phaseN || !activo) && !noValues){
         // CkPrintf("[%d]  Compara Valores %d y %d\n",thisIndex,lastValueN,myValues[0]);
         if(lastValueN > myValues[0]){
             // CkPrintf("\t\t[%d] ACEPTA. Llama a Chare [%d]\n",thisIndex,indexIzq);
@@ -155,7 +155,7 @@ void Merge::check(int indexDer){
     if(phase > 0){
         if(activo){
             if(indexLlamoIzq >= 0){
-                // activo = false;
+                activo = false;
                 // CkPrintf("[%d] Se desactivó en check Izq. Avisar a [%d] que me puede llamar.\n",thisIndex,indexLlamoIzq);
                 // thisProxy[indexLlamoIzq].cambiarPosicion(thisIndex,false);
                 thisProxy[indexLlamoIzq].startCompare(thisIndex,thisIndex,false,posicion,primero);
@@ -168,7 +168,7 @@ void Merge::check(int indexDer){
             }
             else{
                 // CkPrintf("[%d] Se desactivó definitivamente.\n",thisIndex);
-                // activo = false;
+                activo = false;
             }
         }
     }

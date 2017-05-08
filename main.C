@@ -74,9 +74,9 @@ void Main::startNextPhase() {
 void Main::terminar(int valuesSort[]) {
 
     fin=CkWallTimer();		//Toma tiempo de fin
-    for(int i=0;i<numElements;i++){
+    // for(int i=0;i<numElements;i++){
         // CkPrintf("After: Merge[%d]=%d\n",i,valuesSort[i]);
-    }
+    // }
     // Exit the program
     CkPrintf("\nTiempo: %f\n\n",fin-inicio);	//Imprime tiempos
     CkExit();
