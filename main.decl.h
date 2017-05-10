@@ -18,6 +18,7 @@
 /* DECLS: mainchare Main: Chare{
 Main(CkArgMsg* impl_msg);
 void terminar(const int *values);
+void barrier(void);
 };
  */
  class Main;
@@ -79,6 +80,30 @@ class CkIndex_Main:public CkIndex_Chare{
     static int _callmarshall_terminar_marshall2(char* impl_buf, void* impl_obj_void);
     
     static void _marshallmessagepup_terminar_marshall2(PUP::er &p,void *msg);
+    /* DECLS: void barrier(void);
+     */
+    // Entry point registration at startup
+    
+    static int reg_barrier_void();
+    // Entry point index lookup
+    
+    inline static int idx_barrier_void() {
+      static int epidx = reg_barrier_void();
+      return epidx;
+    }
+
+    
+    inline static int idx_barrier(void (Main::*)(void) ) {
+      return idx_barrier_void();
+    }
+
+
+    
+    static int barrier(void) { return idx_barrier_void(); }
+    
+    static void _call_barrier_void(void* impl_msg, void* impl_obj);
+    
+    static void _call_sdag_barrier_void(void* impl_msg, void* impl_obj);
 };
 /* --------------- element proxy ------------------ */
 class CProxy_Main:public CProxy_Chare{
@@ -130,6 +155,11 @@ class CProxy_Main:public CProxy_Chare{
     
     void terminar(const int *values, const CkEntryOptions *impl_e_opts=NULL);
 
+/* DECLS: void barrier(void);
+ */
+    
+    void barrier(void);
+
 };
 PUPmarshall(CProxy_Main)
 #define Main_SDAG_CODE 
@@ -146,6 +176,9 @@ class Closure_Main {
 
 
     struct terminar_2_closure;
+
+
+    struct barrier_3_closure;
 
 };
 

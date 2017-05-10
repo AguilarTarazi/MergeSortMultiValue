@@ -16,6 +16,7 @@ cantChares como variable de solo lectura
 Main::Main(CkArgMsg* msg) {
     //Initialize member variables
     // Read in any command-line arguments
+    cantCheck = 0;
     numElements = 4;
     cantChares = 4;
     if (msg->argc > 2){
@@ -34,10 +35,11 @@ Main::Main(CkArgMsg* msg) {
         CkExit();
     }
     CkPrintf("\nCANTIDAD DE CHARES: %d\nCANTIDAD DE ELEMENTOS CHARE: %d\n",cantChares,numElements);
-    values = (int *)malloc(sizeof(int)*numElements);
+    values = (int *)calloc(numElements,sizeof(int));
+    // values = (int *)malloc(sizeof(int)*numElements);
     for(int i=0;i<numElements;i++){
-        value = i; //Ascendente
-        value = rand() % 10000; //Aleatorio
+        value = i+1; //Ascendente
+        // value = rand() % 10000; //Aleatorio
         // value = numElements-i; //Descendente
         values[i] = value;
         // CkPrintf("Before: Merge[%d]: %d\n",i,values[i]);
@@ -62,17 +64,21 @@ Main::Main(CkMigrateMessage* msg) { }
 
 void Main::startNextPhase() {
     // Comienzan su fase (divide) solo el primero y el del medio.
-    int *valuesIzq = (int *)malloc(sizeof(int)*(numElements/2));
-    int *valuesDer = (int *)malloc(sizeof(int)*(numElements-numElements/2));
+    int *valuesIzq = (int *)calloc(numElements/2,sizeof(int));
+    int *valuesDer = (int *)calloc(numElements-numElements/2,sizeof(int));
+    // int *valuesIzq = (int *)malloc(sizeof(int)*(numElements/2));
+    // int *valuesDer = (int *)malloc(sizeof(int)*(numElements-numElements/2));
     memcpy(valuesIzq,values,(numElements/2)*sizeof(int));
     memcpy(valuesDer,values+numElements/2,(numElements-numElements/2)*sizeof(int));
     inicio=CkWallTimer();	//Toma tiempo de inicio
     mergeArray[0].initPhase(cantChares/2-1,cantChares-1,0,valuesIzq,numElements/2, cantChares/2);
+    free(valuesIzq);
     mergeArray[cantChares/2].initPhase(cantChares-1,-1,0,valuesDer,numElements-numElements/2, -1);
+    free(valuesDer);
+    free(values);
 }
 
 void Main::terminar(int valuesSort[]) {
-
     fin=CkWallTimer();		//Toma tiempo de fin
     // for(int i=0;i<numElements;i++){
         // CkPrintf("After: Merge[%d]=%d\n",i,valuesSort[i]);
@@ -80,6 +86,15 @@ void Main::terminar(int valuesSort[]) {
     // Exit the program
     CkPrintf("\nTiempo: %f\n\n",fin-inicio);	//Imprime tiempos
     CkExit();
+}
+
+void Main::barrier(){
+    cantCheck++;
+    CkPrintf("cantCheck: %d\n",cantCheck);
+    if(cantCheck==cantChares){
+        CkPrintf("LISTO\n");
+        mergeArray.listo();
+    }
 }
 
 // Because this function is declared in a ".ci" file (main.ci in this

@@ -13,7 +13,7 @@ class Main : public CBase_Main {
   CProxy_Merge mergeArray;
   float inicio,fin;
   int *values;
-  int value;
+  int value,cantCheck;
 
   /// Private Member Functions ///
   void startNextPhase();
@@ -25,6 +25,8 @@ class Main : public CBase_Main {
 
   /// Entry Methods ///
   void terminar(int []);
+  void barrier();
+  // void enviarCb(CkCallbackResumeThread &);
 };
 
 

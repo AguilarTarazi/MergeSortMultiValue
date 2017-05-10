@@ -51,6 +51,26 @@
     };
 #endif /* CK_TEMPLATES_ONLY */
 
+#ifndef CK_TEMPLATES_ONLY
+
+    struct Closure_Main::barrier_3_closure : public SDAG::Closure {
+      
+
+      barrier_3_closure() {
+        init();
+      }
+      barrier_3_closure(CkMigrateMessage*) {
+        init();
+      }
+            void pup(PUP::er& __p) {
+        packClosure(__p);
+      }
+      virtual ~barrier_3_closure() {
+      }
+      PUPable_decl(SINGLE_ARG(barrier_3_closure));
+    };
+#endif /* CK_TEMPLATES_ONLY */
+
 
 
 /* DEFS: readonly CProxy_Main mainProxy;
@@ -87,6 +107,7 @@ extern "C" void __xlater_roPup_cantChares(void *_impl_pup_er) {
 /* DEFS: mainchare Main: Chare{
 Main(CkArgMsg* impl_msg);
 void terminar(const int *values);
+void barrier(void);
 };
  */
 #ifndef CK_TEMPLATES_ONLY
@@ -232,6 +253,39 @@ PUPable_def(SINGLE_ARG(Closure_Main::terminar_2_closure))
 #endif /* CK_TEMPLATES_ONLY */
 
 #ifndef CK_TEMPLATES_ONLY
+/* DEFS: void barrier(void);
+ */
+
+void CProxy_Main::barrier(void)
+{
+  ckCheck();
+  void *impl_msg = CkAllocSysMsg();
+  if (ckIsDelegated()) {
+    int destPE=CkChareMsgPrep(CkIndex_Main::idx_barrier_void(), impl_msg, &ckGetChareID());
+    if (destPE!=-1) ckDelegatedTo()->ChareSend(ckDelegatedPtr(),CkIndex_Main::idx_barrier_void(), impl_msg, &ckGetChareID(),destPE);
+  }
+  else CkSendMsg(CkIndex_Main::idx_barrier_void(), impl_msg, &ckGetChareID(),0);
+}
+
+// Entry point registration function
+
+int CkIndex_Main::reg_barrier_void() {
+  int epidx = CkRegisterEp("barrier(void)",
+      _call_barrier_void, 0, __idx, 0);
+  return epidx;
+}
+
+
+void CkIndex_Main::_call_barrier_void(void* impl_msg, void* impl_obj_void)
+{
+  Main* impl_obj = static_cast<Main *>(impl_obj_void);
+  CkFreeSysMsg(impl_msg);
+  impl_obj->barrier();
+}
+PUPable_def(SINGLE_ARG(Closure_Main::barrier_3_closure))
+#endif /* CK_TEMPLATES_ONLY */
+
+#ifndef CK_TEMPLATES_ONLY
 #endif /* CK_TEMPLATES_ONLY */
 #ifndef CK_TEMPLATES_ONLY
 void CkIndex_Main::__register(const char *s, size_t size) {
@@ -243,6 +297,9 @@ void CkIndex_Main::__register(const char *s, size_t size) {
 
   // REG: void terminar(const int *values);
   idx_terminar_marshall2();
+
+  // REG: void barrier(void);
+  idx_barrier_void();
 
 }
 #endif /* CK_TEMPLATES_ONLY */
@@ -263,6 +320,7 @@ void _registermain(void)
 /* REG: mainchare Main: Chare{
 Main(CkArgMsg* impl_msg);
 void terminar(const int *values);
+void barrier(void);
 };
 */
   CkIndex_Main::__register("Main", sizeof(Main));

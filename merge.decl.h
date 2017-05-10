@@ -7,12 +7,11 @@
 /* DECLS: array Merge: ArrayElement{
 Merge(void);
 void initPhase(int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4);
-void startCompare(int impl_noname_5, int impl_noname_6, const bool &impl_noname_7, int impl_noname_8, int impl_noname_9);
-void requestSwap(int impl_noname_a, int impl_noname_b, int impl_noname_c, int impl_noname_d);
-void acceptSwap(int impl_noname_e, int impl_noname_f, const int *val, int impl_noname_10);
-void denySwap(int impl_noname_11, int impl_noname_12, const int *val, int impl_noname_13);
-void saveValue(const int *val, int impl_noname_14, const bool &impl_noname_15);
-void check(int impl_noname_16);
+void startCompare(int impl_noname_5);
+void requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8);
+void saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a);
+void check(void);
+void listo(void);
 Merge(CkMigrateMessage* impl_msg);
 };
  */
@@ -78,7 +77,7 @@ class CkIndex_Merge:public CkIndex_ArrayElement{
     static int _callmarshall_initPhase_marshall2(char* impl_buf, void* impl_obj_void);
     
     static void _marshallmessagepup_initPhase_marshall2(PUP::er &p,void *msg);
-    /* DECLS: void startCompare(int impl_noname_5, int impl_noname_6, const bool &impl_noname_7, int impl_noname_8, int impl_noname_9);
+    /* DECLS: void startCompare(int impl_noname_5);
      */
     // Entry point registration at startup
     
@@ -91,13 +90,13 @@ class CkIndex_Merge:public CkIndex_ArrayElement{
     }
 
     
-    inline static int idx_startCompare(void (Merge::*)(int impl_noname_5, int impl_noname_6, const bool &impl_noname_7, int impl_noname_8, int impl_noname_9) ) {
+    inline static int idx_startCompare(void (Merge::*)(int impl_noname_5) ) {
       return idx_startCompare_marshall3();
     }
 
 
     
-    static int startCompare(int impl_noname_5, int impl_noname_6, const bool &impl_noname_7, int impl_noname_8, int impl_noname_9) { return idx_startCompare_marshall3(); }
+    static int startCompare(int impl_noname_5) { return idx_startCompare_marshall3(); }
     
     static void _call_startCompare_marshall3(void* impl_msg, void* impl_obj);
     
@@ -106,7 +105,7 @@ class CkIndex_Merge:public CkIndex_ArrayElement{
     static int _callmarshall_startCompare_marshall3(char* impl_buf, void* impl_obj_void);
     
     static void _marshallmessagepup_startCompare_marshall3(PUP::er &p,void *msg);
-    /* DECLS: void requestSwap(int impl_noname_a, int impl_noname_b, int impl_noname_c, int impl_noname_d);
+    /* DECLS: void requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8);
      */
     // Entry point registration at startup
     
@@ -119,13 +118,13 @@ class CkIndex_Merge:public CkIndex_ArrayElement{
     }
 
     
-    inline static int idx_requestSwap(void (Merge::*)(int impl_noname_a, int impl_noname_b, int impl_noname_c, int impl_noname_d) ) {
+    inline static int idx_requestSwap(void (Merge::*)(int impl_noname_6, int impl_noname_7, int impl_noname_8) ) {
       return idx_requestSwap_marshall4();
     }
 
 
     
-    static int requestSwap(int impl_noname_a, int impl_noname_b, int impl_noname_c, int impl_noname_d) { return idx_requestSwap_marshall4(); }
+    static int requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8) { return idx_requestSwap_marshall4(); }
     
     static void _call_requestSwap_marshall4(void* impl_msg, void* impl_obj);
     
@@ -134,118 +133,82 @@ class CkIndex_Merge:public CkIndex_ArrayElement{
     static int _callmarshall_requestSwap_marshall4(char* impl_buf, void* impl_obj_void);
     
     static void _marshallmessagepup_requestSwap_marshall4(PUP::er &p,void *msg);
-    /* DECLS: void acceptSwap(int impl_noname_e, int impl_noname_f, const int *val, int impl_noname_10);
+    /* DECLS: void saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a);
      */
     // Entry point registration at startup
     
-    static int reg_acceptSwap_marshall5();
+    static int reg_saveValue_marshall5();
     // Entry point index lookup
     
-    inline static int idx_acceptSwap_marshall5() {
-      static int epidx = reg_acceptSwap_marshall5();
+    inline static int idx_saveValue_marshall5() {
+      static int epidx = reg_saveValue_marshall5();
       return epidx;
     }
 
     
-    inline static int idx_acceptSwap(void (Merge::*)(int impl_noname_e, int impl_noname_f, const int *val, int impl_noname_10) ) {
-      return idx_acceptSwap_marshall5();
+    inline static int idx_saveValue(void (Merge::*)(const int *val, int impl_noname_9, const bool &impl_noname_a) ) {
+      return idx_saveValue_marshall5();
     }
 
 
     
-    static int acceptSwap(int impl_noname_e, int impl_noname_f, const int *val, int impl_noname_10) { return idx_acceptSwap_marshall5(); }
+    static int saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a) { return idx_saveValue_marshall5(); }
     
-    static void _call_acceptSwap_marshall5(void* impl_msg, void* impl_obj);
+    static void _call_saveValue_marshall5(void* impl_msg, void* impl_obj);
     
-    static void _call_sdag_acceptSwap_marshall5(void* impl_msg, void* impl_obj);
+    static void _call_sdag_saveValue_marshall5(void* impl_msg, void* impl_obj);
     
-    static int _callmarshall_acceptSwap_marshall5(char* impl_buf, void* impl_obj_void);
+    static int _callmarshall_saveValue_marshall5(char* impl_buf, void* impl_obj_void);
     
-    static void _marshallmessagepup_acceptSwap_marshall5(PUP::er &p,void *msg);
-    /* DECLS: void denySwap(int impl_noname_11, int impl_noname_12, const int *val, int impl_noname_13);
+    static void _marshallmessagepup_saveValue_marshall5(PUP::er &p,void *msg);
+    /* DECLS: void check(void);
      */
     // Entry point registration at startup
     
-    static int reg_denySwap_marshall6();
+    static int reg_check_void();
     // Entry point index lookup
     
-    inline static int idx_denySwap_marshall6() {
-      static int epidx = reg_denySwap_marshall6();
+    inline static int idx_check_void() {
+      static int epidx = reg_check_void();
       return epidx;
     }
 
     
-    inline static int idx_denySwap(void (Merge::*)(int impl_noname_11, int impl_noname_12, const int *val, int impl_noname_13) ) {
-      return idx_denySwap_marshall6();
+    inline static int idx_check(void (Merge::*)(void) ) {
+      return idx_check_void();
     }
 
 
     
-    static int denySwap(int impl_noname_11, int impl_noname_12, const int *val, int impl_noname_13) { return idx_denySwap_marshall6(); }
+    static int check(void) { return idx_check_void(); }
     
-    static void _call_denySwap_marshall6(void* impl_msg, void* impl_obj);
+    static void _call_check_void(void* impl_msg, void* impl_obj);
     
-    static void _call_sdag_denySwap_marshall6(void* impl_msg, void* impl_obj);
-    
-    static int _callmarshall_denySwap_marshall6(char* impl_buf, void* impl_obj_void);
-    
-    static void _marshallmessagepup_denySwap_marshall6(PUP::er &p,void *msg);
-    /* DECLS: void saveValue(const int *val, int impl_noname_14, const bool &impl_noname_15);
+    static void _call_sdag_check_void(void* impl_msg, void* impl_obj);
+    /* DECLS: void listo(void);
      */
     // Entry point registration at startup
     
-    static int reg_saveValue_marshall7();
+    static int reg_listo_void();
     // Entry point index lookup
     
-    inline static int idx_saveValue_marshall7() {
-      static int epidx = reg_saveValue_marshall7();
+    inline static int idx_listo_void() {
+      static int epidx = reg_listo_void();
       return epidx;
     }
 
     
-    inline static int idx_saveValue(void (Merge::*)(const int *val, int impl_noname_14, const bool &impl_noname_15) ) {
-      return idx_saveValue_marshall7();
+    inline static int idx_listo(void (Merge::*)(void) ) {
+      return idx_listo_void();
     }
 
 
     
-    static int saveValue(const int *val, int impl_noname_14, const bool &impl_noname_15) { return idx_saveValue_marshall7(); }
+    static int listo(void) { return idx_listo_void(); }
     
-    static void _call_saveValue_marshall7(void* impl_msg, void* impl_obj);
+    static void _call_listo_void(void* impl_msg, void* impl_obj);
     
-    static void _call_sdag_saveValue_marshall7(void* impl_msg, void* impl_obj);
-    
-    static int _callmarshall_saveValue_marshall7(char* impl_buf, void* impl_obj_void);
-    
-    static void _marshallmessagepup_saveValue_marshall7(PUP::er &p,void *msg);
-    /* DECLS: void check(int impl_noname_16);
-     */
-    // Entry point registration at startup
-    
-    static int reg_check_marshall8();
-    // Entry point index lookup
-    
-    inline static int idx_check_marshall8() {
-      static int epidx = reg_check_marshall8();
-      return epidx;
-    }
-
-    
-    inline static int idx_check(void (Merge::*)(int impl_noname_16) ) {
-      return idx_check_marshall8();
-    }
-
-
-    
-    static int check(int impl_noname_16) { return idx_check_marshall8(); }
-    
-    static void _call_check_marshall8(void* impl_msg, void* impl_obj);
-    
-    static void _call_sdag_check_marshall8(void* impl_msg, void* impl_obj);
-    
-    static int _callmarshall_check_marshall8(char* impl_buf, void* impl_obj_void);
-    
-    static void _marshallmessagepup_check_marshall8(PUP::er &p,void *msg);
+    static void _call_sdag_listo_void(void* impl_msg, void* impl_obj);
     /* DECLS: Merge(CkMigrateMessage* impl_msg);
      */
     // Entry point registration at startup
@@ -356,35 +319,30 @@ class CkIndex_Merge:public CkIndex_ArrayElement{
     
     void initPhase(int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4, const CkEntryOptions *impl_e_opts=NULL) ;
 
-/* DECLS: void startCompare(int impl_noname_5, int impl_noname_6, const bool &impl_noname_7, int impl_noname_8, int impl_noname_9);
+/* DECLS: void startCompare(int impl_noname_5);
  */
     
-    void startCompare(int impl_noname_5, int impl_noname_6, const bool &impl_noname_7, int impl_noname_8, int impl_noname_9, const CkEntryOptions *impl_e_opts=NULL) ;
+    void startCompare(int impl_noname_5, const CkEntryOptions *impl_e_opts=NULL) ;
 
-/* DECLS: void requestSwap(int impl_noname_a, int impl_noname_b, int impl_noname_c, int impl_noname_d);
+/* DECLS: void requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8);
  */
     
-    void requestSwap(int impl_noname_a, int impl_noname_b, int impl_noname_c, int impl_noname_d, const CkEntryOptions *impl_e_opts=NULL) ;
+    void requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8, const CkEntryOptions *impl_e_opts=NULL) ;
 
-/* DECLS: void acceptSwap(int impl_noname_e, int impl_noname_f, const int *val, int impl_noname_10);
+/* DECLS: void saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a);
  */
     
-    void acceptSwap(int impl_noname_e, int impl_noname_f, const int *val, int impl_noname_10, const CkEntryOptions *impl_e_opts=NULL) ;
+    void saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a, const CkEntryOptions *impl_e_opts=NULL) ;
 
-/* DECLS: void denySwap(int impl_noname_11, int impl_noname_12, const int *val, int impl_noname_13);
+/* DECLS: void check(void);
  */
     
-    void denySwap(int impl_noname_11, int impl_noname_12, const int *val, int impl_noname_13, const CkEntryOptions *impl_e_opts=NULL) ;
+    void check(void) ;
 
-/* DECLS: void saveValue(const int *val, int impl_noname_14, const bool &impl_noname_15);
+/* DECLS: void listo(void);
  */
     
-    void saveValue(const int *val, int impl_noname_14, const bool &impl_noname_15, const CkEntryOptions *impl_e_opts=NULL) ;
-
-/* DECLS: void check(int impl_noname_16);
- */
-    
-    void check(int impl_noname_16, const CkEntryOptions *impl_e_opts=NULL) ;
+    void listo(void) ;
 
 /* DECLS: Merge(CkMigrateMessage* impl_msg);
  */
@@ -474,35 +432,30 @@ PUPmarshall(CProxyElement_Merge)
     
     void initPhase(int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4, const CkEntryOptions *impl_e_opts=NULL) ;
 
-/* DECLS: void startCompare(int impl_noname_5, int impl_noname_6, const bool &impl_noname_7, int impl_noname_8, int impl_noname_9);
+/* DECLS: void startCompare(int impl_noname_5);
  */
     
-    void startCompare(int impl_noname_5, int impl_noname_6, const bool &impl_noname_7, int impl_noname_8, int impl_noname_9, const CkEntryOptions *impl_e_opts=NULL) ;
+    void startCompare(int impl_noname_5, const CkEntryOptions *impl_e_opts=NULL) ;
 
-/* DECLS: void requestSwap(int impl_noname_a, int impl_noname_b, int impl_noname_c, int impl_noname_d);
+/* DECLS: void requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8);
  */
     
-    void requestSwap(int impl_noname_a, int impl_noname_b, int impl_noname_c, int impl_noname_d, const CkEntryOptions *impl_e_opts=NULL) ;
+    void requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8, const CkEntryOptions *impl_e_opts=NULL) ;
 
-/* DECLS: void acceptSwap(int impl_noname_e, int impl_noname_f, const int *val, int impl_noname_10);
+/* DECLS: void saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a);
  */
     
-    void acceptSwap(int impl_noname_e, int impl_noname_f, const int *val, int impl_noname_10, const CkEntryOptions *impl_e_opts=NULL) ;
+    void saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a, const CkEntryOptions *impl_e_opts=NULL) ;
 
-/* DECLS: void denySwap(int impl_noname_11, int impl_noname_12, const int *val, int impl_noname_13);
+/* DECLS: void check(void);
  */
     
-    void denySwap(int impl_noname_11, int impl_noname_12, const int *val, int impl_noname_13, const CkEntryOptions *impl_e_opts=NULL) ;
+    void check(void) ;
 
-/* DECLS: void saveValue(const int *val, int impl_noname_14, const bool &impl_noname_15);
+/* DECLS: void listo(void);
  */
     
-    void saveValue(const int *val, int impl_noname_14, const bool &impl_noname_15, const CkEntryOptions *impl_e_opts=NULL) ;
-
-/* DECLS: void check(int impl_noname_16);
- */
-    
-    void check(int impl_noname_16, const CkEntryOptions *impl_e_opts=NULL) ;
+    void listo(void) ;
 
 /* DECLS: Merge(CkMigrateMessage* impl_msg);
  */
@@ -622,35 +575,30 @@ PUPmarshall(CProxy_Merge)
     
     void initPhase(int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4, const CkEntryOptions *impl_e_opts=NULL) ;
 
-/* DECLS: void startCompare(int impl_noname_5, int impl_noname_6, const bool &impl_noname_7, int impl_noname_8, int impl_noname_9);
+/* DECLS: void startCompare(int impl_noname_5);
  */
     
-    void startCompare(int impl_noname_5, int impl_noname_6, const bool &impl_noname_7, int impl_noname_8, int impl_noname_9, const CkEntryOptions *impl_e_opts=NULL) ;
+    void startCompare(int impl_noname_5, const CkEntryOptions *impl_e_opts=NULL) ;
 
-/* DECLS: void requestSwap(int impl_noname_a, int impl_noname_b, int impl_noname_c, int impl_noname_d);
+/* DECLS: void requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8);
  */
     
-    void requestSwap(int impl_noname_a, int impl_noname_b, int impl_noname_c, int impl_noname_d, const CkEntryOptions *impl_e_opts=NULL) ;
+    void requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8, const CkEntryOptions *impl_e_opts=NULL) ;
 
-/* DECLS: void acceptSwap(int impl_noname_e, int impl_noname_f, const int *val, int impl_noname_10);
+/* DECLS: void saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a);
  */
     
-    void acceptSwap(int impl_noname_e, int impl_noname_f, const int *val, int impl_noname_10, const CkEntryOptions *impl_e_opts=NULL) ;
+    void saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a, const CkEntryOptions *impl_e_opts=NULL) ;
 
-/* DECLS: void denySwap(int impl_noname_11, int impl_noname_12, const int *val, int impl_noname_13);
+/* DECLS: void check(void);
  */
     
-    void denySwap(int impl_noname_11, int impl_noname_12, const int *val, int impl_noname_13, const CkEntryOptions *impl_e_opts=NULL) ;
+    void check(void) ;
 
-/* DECLS: void saveValue(const int *val, int impl_noname_14, const bool &impl_noname_15);
+/* DECLS: void listo(void);
  */
     
-    void saveValue(const int *val, int impl_noname_14, const bool &impl_noname_15, const CkEntryOptions *impl_e_opts=NULL) ;
-
-/* DECLS: void check(int impl_noname_16);
- */
-    
-    void check(int impl_noname_16, const CkEntryOptions *impl_e_opts=NULL) ;
+    void listo(void) ;
 
 /* DECLS: Merge(CkMigrateMessage* impl_msg);
  */
@@ -674,16 +622,13 @@ class Closure_Merge {
     struct requestSwap_4_closure;
 
 
-    struct acceptSwap_5_closure;
+    struct saveValue_5_closure;
 
 
-    struct denySwap_6_closure;
+    struct check_6_closure;
 
 
-    struct saveValue_7_closure;
-
-
-    struct check_8_closure;
+    struct listo_7_closure;
 
 
 };

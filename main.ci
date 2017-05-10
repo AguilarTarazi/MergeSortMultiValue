@@ -9,6 +9,8 @@ mainmodule main {
   mainchare Main {
     entry Main(CkArgMsg* msg);
     entry void terminar(int values[numElements]);
+    entry void barrier();
+    //entry void enviarCb(CkCallbackResumeThread &cb);
   };
 
   initproc void processorStartupFunc();

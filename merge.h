@@ -24,12 +24,13 @@ class Merge : public CBase_Merge {
 
   /// Entry Methods ///
   void initPhase(int,int,int,int[],int,int);
-  void startCompare(int,int,bool,int,int);
-  void requestSwap(int,int,int,int);
-  void acceptSwap(int,int,int [],int);
-  void denySwap(int,int,int [],int);
+  void startCompare(int);
+  void requestSwap(int,int,int);
+  // void acceptSwap(int [],int);
+  // void denySwap(int [],int);
   void saveValue(int [],int,bool);
-  void check(int);
+  void check();
+  void listo();
 };
 
 
