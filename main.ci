@@ -8,7 +8,7 @@ mainmodule main {
 
   mainchare Main {
     entry Main(CkArgMsg* msg);
-    entry void terminar(int values[numElements]);
+    entry void terminar(int n,int values[n]);
     entry void barrier();
     //entry void enviarCb(CkCallbackResumeThread &cb);
   };

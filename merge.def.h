@@ -5,12 +5,12 @@
 #ifndef CK_TEMPLATES_ONLY
 
     struct Closure_Merge::initPhase_2_closure : public SDAG::Closure {
-      int impl_noname_0;
-      int impl_noname_1;
-      int impl_noname_2;
+      int a;
+      int b;
+      int c;
+      int n;
       int *val;
-      int impl_noname_3;
-      int impl_noname_4;
+      int d;
 
       CkMarshallMsg* _impl_marshall;
       char* _impl_buf_in;
@@ -28,18 +28,18 @@
         _impl_buf_in = 0;
         _impl_buf_size = 0;
       }
-      int & getP0() { return impl_noname_0;}
-      int & getP1() { return impl_noname_1;}
-      int & getP2() { return impl_noname_2;}
-      int *& getP3() { return val;}
-      int & getP4() { return impl_noname_3;}
-      int & getP5() { return impl_noname_4;}
+      int & getP0() { return a;}
+      int & getP1() { return b;}
+      int & getP2() { return c;}
+      int & getP3() { return n;}
+      int *& getP4() { return val;}
+      int & getP5() { return d;}
       void pup(PUP::er& __p) {
-        __p | impl_noname_0;
-        __p | impl_noname_1;
-        __p | impl_noname_2;
-        __p | impl_noname_3;
-        __p | impl_noname_4;
+        __p | a;
+        __p | b;
+        __p | c;
+        __p | n;
+        __p | d;
         packClosure(__p);
         __p | _impl_buf_size;
         bool hasMsg = (_impl_marshall != 0); __p | hasMsg;
@@ -48,14 +48,14 @@
         if (__p.isUnpacking()) {
           char *impl_buf = _impl_marshall ? _impl_marshall->msgBuf : _impl_buf_in;
           PUP::fromMem implP(impl_buf);
-  int impl_noname_0; implP|impl_noname_0;
-  int impl_noname_1; implP|impl_noname_1;
-  int impl_noname_2; implP|impl_noname_2;
+  int a; implP|a;
+  int b; implP|b;
+  int c; implP|c;
+  int n; implP|n;
   int impl_off_val, impl_cnt_val; 
   implP|impl_off_val;
   implP|impl_cnt_val;
-  int impl_noname_3; implP|impl_noname_3;
-  int impl_noname_4; implP|impl_noname_4;
+  int d; implP|d;
           impl_buf+=CK_ALIGN(implP.size(),16);
         val = (int *)(impl_buf+impl_off_val);
         }
@@ -70,7 +70,7 @@
 #ifndef CK_TEMPLATES_ONLY
 
     struct Closure_Merge::startCompare_3_closure : public SDAG::Closure {
-      int impl_noname_5;
+      int a;
 
 
       startCompare_3_closure() {
@@ -79,9 +79,9 @@
       startCompare_3_closure(CkMigrateMessage*) {
         init();
       }
-      int & getP0() { return impl_noname_5;}
+      int & getP0() { return a;}
       void pup(PUP::er& __p) {
-        __p | impl_noname_5;
+        __p | a;
         packClosure(__p);
       }
       virtual ~startCompare_3_closure() {
@@ -93,9 +93,9 @@
 #ifndef CK_TEMPLATES_ONLY
 
     struct Closure_Merge::requestSwap_4_closure : public SDAG::Closure {
-      int impl_noname_6;
-      int impl_noname_7;
-      int impl_noname_8;
+      int a;
+      int b;
+      int c;
 
 
       requestSwap_4_closure() {
@@ -104,13 +104,13 @@
       requestSwap_4_closure(CkMigrateMessage*) {
         init();
       }
-      int & getP0() { return impl_noname_6;}
-      int & getP1() { return impl_noname_7;}
-      int & getP2() { return impl_noname_8;}
+      int & getP0() { return a;}
+      int & getP1() { return b;}
+      int & getP2() { return c;}
       void pup(PUP::er& __p) {
-        __p | impl_noname_6;
-        __p | impl_noname_7;
-        __p | impl_noname_8;
+        __p | a;
+        __p | b;
+        __p | c;
         packClosure(__p);
       }
       virtual ~requestSwap_4_closure() {
@@ -123,8 +123,8 @@
 
     struct Closure_Merge::saveValue_5_closure : public SDAG::Closure {
       int *val;
-      int impl_noname_9;
-      bool impl_noname_a;
+      int m;
+      bool a;
 
       CkMarshallMsg* _impl_marshall;
       char* _impl_buf_in;
@@ -143,11 +143,11 @@
         _impl_buf_size = 0;
       }
       int *& getP0() { return val;}
-      int & getP1() { return impl_noname_9;}
-      bool & getP2() { return impl_noname_a;}
+      int & getP1() { return m;}
+      bool & getP2() { return a;}
       void pup(PUP::er& __p) {
-        __p | impl_noname_9;
-        __p | impl_noname_a;
+        __p | m;
+        __p | a;
         packClosure(__p);
         __p | _impl_buf_size;
         bool hasMsg = (_impl_marshall != 0); __p | hasMsg;
@@ -159,8 +159,8 @@
   int impl_off_val, impl_cnt_val; 
   implP|impl_off_val;
   implP|impl_cnt_val;
-  int impl_noname_9; implP|impl_noname_9;
-  bool impl_noname_a; implP|impl_noname_a;
+  int m; implP|m;
+  bool a; implP|a;
           impl_buf+=CK_ALIGN(implP.size(),16);
         val = (int *)(impl_buf+impl_off_val);
         }
@@ -218,10 +218,10 @@
 
 /* DEFS: array Merge: ArrayElement{
 Merge(void);
-void initPhase(int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4);
-void startCompare(int impl_noname_5);
-void requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8);
-void saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a);
+void initPhase(int a, int b, int c, int n, const int *val, int d);
+void startCompare(int a);
+void requestSwap(int a, int b, int c);
+void saveValue(const int *val, int m, const bool &a);
 void check(void);
 void listo(void);
 Merge(CkMigrateMessage* impl_msg);
@@ -243,40 +243,40 @@ void CProxyElement_Merge::insert(int onPE)
 #endif /* CK_TEMPLATES_ONLY */
 
 #ifndef CK_TEMPLATES_ONLY
-/* DEFS: void initPhase(int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4);
+/* DEFS: void initPhase(int a, int b, int c, int n, const int *val, int d);
  */
 
-void CProxyElement_Merge::initPhase(int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4, const CkEntryOptions *impl_e_opts) 
+void CProxyElement_Merge::initPhase(int a, int b, int c, int n, const int *val, int d, const CkEntryOptions *impl_e_opts) 
 {
   ckCheck();
-  //Marshall: int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4
+  //Marshall: int a, int b, int c, int n, const int *val, int d
   int impl_off=0;
   int impl_arrstart=0;
   int impl_off_val, impl_cnt_val;
   impl_off_val=impl_off=CK_ALIGN(impl_off,sizeof(int));
-  impl_off+=(impl_cnt_val=sizeof(int)*(numElements));
+  impl_off+=(impl_cnt_val=sizeof(int)*(n));
   { //Find the size of the PUP'd data
     PUP::sizer implP;
-    implP|impl_noname_0;
-    implP|impl_noname_1;
-    implP|impl_noname_2;
+    implP|a;
+    implP|b;
+    implP|c;
+    implP|n;
     implP|impl_off_val;
     implP|impl_cnt_val;
-    implP|impl_noname_3;
-    implP|impl_noname_4;
+    implP|d;
     impl_arrstart=CK_ALIGN(implP.size(),16);
     impl_off+=impl_arrstart;
   }
   CkMarshallMsg *impl_msg=CkAllocateMarshallMsg(impl_off,impl_e_opts);
   { //Copy over the PUP'd data
     PUP::toMem implP((void *)impl_msg->msgBuf);
-    implP|impl_noname_0;
-    implP|impl_noname_1;
-    implP|impl_noname_2;
+    implP|a;
+    implP|b;
+    implP|c;
+    implP|n;
     implP|impl_off_val;
     implP|impl_cnt_val;
-    implP|impl_noname_3;
-    implP|impl_noname_4;
+    implP|d;
   }
   char *impl_buf=impl_msg->msgBuf+impl_arrstart;
   memcpy(impl_buf+impl_off_val,val,impl_cnt_val);
@@ -288,23 +288,23 @@ void CProxyElement_Merge::initPhase(int impl_noname_0, int impl_noname_1, int im
 #endif /* CK_TEMPLATES_ONLY */
 
 #ifndef CK_TEMPLATES_ONLY
-/* DEFS: void startCompare(int impl_noname_5);
+/* DEFS: void startCompare(int a);
  */
 
-void CProxyElement_Merge::startCompare(int impl_noname_5, const CkEntryOptions *impl_e_opts) 
+void CProxyElement_Merge::startCompare(int a, const CkEntryOptions *impl_e_opts) 
 {
   ckCheck();
-  //Marshall: int impl_noname_5
+  //Marshall: int a
   int impl_off=0;
   { //Find the size of the PUP'd data
     PUP::sizer implP;
-    implP|impl_noname_5;
+    implP|a;
     impl_off+=implP.size();
   }
   CkMarshallMsg *impl_msg=CkAllocateMarshallMsg(impl_off,impl_e_opts);
   { //Copy over the PUP'd data
     PUP::toMem implP((void *)impl_msg->msgBuf);
-    implP|impl_noname_5;
+    implP|a;
   }
   UsrToEnv(impl_msg)->setMsgtype(ForArrayEltMsg);
   CkArrayMessage *impl_amsg=(CkArrayMessage *)impl_msg;
@@ -314,27 +314,27 @@ void CProxyElement_Merge::startCompare(int impl_noname_5, const CkEntryOptions *
 #endif /* CK_TEMPLATES_ONLY */
 
 #ifndef CK_TEMPLATES_ONLY
-/* DEFS: void requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8);
+/* DEFS: void requestSwap(int a, int b, int c);
  */
 
-void CProxyElement_Merge::requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8, const CkEntryOptions *impl_e_opts) 
+void CProxyElement_Merge::requestSwap(int a, int b, int c, const CkEntryOptions *impl_e_opts) 
 {
   ckCheck();
-  //Marshall: int impl_noname_6, int impl_noname_7, int impl_noname_8
+  //Marshall: int a, int b, int c
   int impl_off=0;
   { //Find the size of the PUP'd data
     PUP::sizer implP;
-    implP|impl_noname_6;
-    implP|impl_noname_7;
-    implP|impl_noname_8;
+    implP|a;
+    implP|b;
+    implP|c;
     impl_off+=implP.size();
   }
   CkMarshallMsg *impl_msg=CkAllocateMarshallMsg(impl_off,impl_e_opts);
   { //Copy over the PUP'd data
     PUP::toMem implP((void *)impl_msg->msgBuf);
-    implP|impl_noname_6;
-    implP|impl_noname_7;
-    implP|impl_noname_8;
+    implP|a;
+    implP|b;
+    implP|c;
   }
   UsrToEnv(impl_msg)->setMsgtype(ForArrayEltMsg);
   CkArrayMessage *impl_amsg=(CkArrayMessage *)impl_msg;
@@ -344,25 +344,25 @@ void CProxyElement_Merge::requestSwap(int impl_noname_6, int impl_noname_7, int 
 #endif /* CK_TEMPLATES_ONLY */
 
 #ifndef CK_TEMPLATES_ONLY
-/* DEFS: void saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a);
+/* DEFS: void saveValue(const int *val, int m, const bool &a);
  */
 
-void CProxyElement_Merge::saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a, const CkEntryOptions *impl_e_opts) 
+void CProxyElement_Merge::saveValue(const int *val, int m, const bool &a, const CkEntryOptions *impl_e_opts) 
 {
   ckCheck();
-  //Marshall: const int *val, int impl_noname_9, const bool &impl_noname_a
+  //Marshall: const int *val, int m, const bool &a
   int impl_off=0;
   int impl_arrstart=0;
   int impl_off_val, impl_cnt_val;
   impl_off_val=impl_off=CK_ALIGN(impl_off,sizeof(int));
-  impl_off+=(impl_cnt_val=sizeof(int)*(numElements));
+  impl_off+=(impl_cnt_val=sizeof(int)*(m));
   { //Find the size of the PUP'd data
     PUP::sizer implP;
     implP|impl_off_val;
     implP|impl_cnt_val;
-    implP|impl_noname_9;
+    implP|m;
     //Have to cast away const-ness to get pup routine
-    implP|(bool &)impl_noname_a;
+    implP|(bool &)a;
     impl_arrstart=CK_ALIGN(implP.size(),16);
     impl_off+=impl_arrstart;
   }
@@ -371,9 +371,9 @@ void CProxyElement_Merge::saveValue(const int *val, int impl_noname_9, const boo
     PUP::toMem implP((void *)impl_msg->msgBuf);
     implP|impl_off_val;
     implP|impl_cnt_val;
-    implP|impl_noname_9;
+    implP|m;
     //Have to cast away const-ness to get pup routine
-    implP|(bool &)impl_noname_a;
+    implP|(bool &)a;
   }
   char *impl_buf=impl_msg->msgBuf+impl_arrstart;
   memcpy(impl_buf+impl_off_val,val,impl_cnt_val);
@@ -471,40 +471,40 @@ void CkIndex_Merge::_call_Merge_void(void* impl_msg, void* impl_obj_void)
 #endif /* CK_TEMPLATES_ONLY */
 
 #ifndef CK_TEMPLATES_ONLY
-/* DEFS: void initPhase(int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4);
+/* DEFS: void initPhase(int a, int b, int c, int n, const int *val, int d);
  */
 
-void CProxy_Merge::initPhase(int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4, const CkEntryOptions *impl_e_opts) 
+void CProxy_Merge::initPhase(int a, int b, int c, int n, const int *val, int d, const CkEntryOptions *impl_e_opts) 
 {
   ckCheck();
-  //Marshall: int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4
+  //Marshall: int a, int b, int c, int n, const int *val, int d
   int impl_off=0;
   int impl_arrstart=0;
   int impl_off_val, impl_cnt_val;
   impl_off_val=impl_off=CK_ALIGN(impl_off,sizeof(int));
-  impl_off+=(impl_cnt_val=sizeof(int)*(numElements));
+  impl_off+=(impl_cnt_val=sizeof(int)*(n));
   { //Find the size of the PUP'd data
     PUP::sizer implP;
-    implP|impl_noname_0;
-    implP|impl_noname_1;
-    implP|impl_noname_2;
+    implP|a;
+    implP|b;
+    implP|c;
+    implP|n;
     implP|impl_off_val;
     implP|impl_cnt_val;
-    implP|impl_noname_3;
-    implP|impl_noname_4;
+    implP|d;
     impl_arrstart=CK_ALIGN(implP.size(),16);
     impl_off+=impl_arrstart;
   }
   CkMarshallMsg *impl_msg=CkAllocateMarshallMsg(impl_off,impl_e_opts);
   { //Copy over the PUP'd data
     PUP::toMem implP((void *)impl_msg->msgBuf);
-    implP|impl_noname_0;
-    implP|impl_noname_1;
-    implP|impl_noname_2;
+    implP|a;
+    implP|b;
+    implP|c;
+    implP|n;
     implP|impl_off_val;
     implP|impl_cnt_val;
-    implP|impl_noname_3;
-    implP|impl_noname_4;
+    implP|d;
   }
   char *impl_buf=impl_msg->msgBuf+impl_arrstart;
   memcpy(impl_buf+impl_off_val,val,impl_cnt_val);
@@ -517,7 +517,7 @@ void CProxy_Merge::initPhase(int impl_noname_0, int impl_noname_1, int impl_nona
 // Entry point registration function
 
 int CkIndex_Merge::reg_initPhase_marshall2() {
-  int epidx = CkRegisterEp("initPhase(int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4)",
+  int epidx = CkRegisterEp("initPhase(int a, int b, int c, int n, const int *val, int d)",
       _call_initPhase_marshall2, CkMarshallMsg::__idx, __idx, 0+CK_EP_NOKEEP);
   CkRegisterMarshallUnpackFn(epidx, _callmarshall_initPhase_marshall2);
   CkRegisterMessagePupFn(epidx, _marshallmessagepup_initPhase_marshall2);
@@ -531,63 +531,65 @@ void CkIndex_Merge::_call_initPhase_marshall2(void* impl_msg, void* impl_obj_voi
   Merge* impl_obj = static_cast<Merge *>(impl_obj_void);
   CkMarshallMsg *impl_msg_typed=(CkMarshallMsg *)impl_msg;
   char *impl_buf=impl_msg_typed->msgBuf;
-  /*Unmarshall pup'd fields: int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4*/
+  /*Unmarshall pup'd fields: int a, int b, int c, int n, const int *val, int d*/
   PUP::fromMem implP(impl_buf);
-  int impl_noname_0; implP|impl_noname_0;
-  int impl_noname_1; implP|impl_noname_1;
-  int impl_noname_2; implP|impl_noname_2;
+  int a; implP|a;
+  int b; implP|b;
+  int c; implP|c;
+  int n; implP|n;
   int impl_off_val, impl_cnt_val; 
   implP|impl_off_val;
   implP|impl_cnt_val;
-  int impl_noname_3; implP|impl_noname_3;
-  int impl_noname_4; implP|impl_noname_4;
+  int d; implP|d;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
   int *val=(int *)(impl_buf+impl_off_val);
-  impl_obj->initPhase(impl_noname_0, impl_noname_1, impl_noname_2, val, impl_noname_3, impl_noname_4);
+  impl_obj->initPhase(a, b, c, n, val, d);
 }
 
 int CkIndex_Merge::_callmarshall_initPhase_marshall2(char* impl_buf, void* impl_obj_void) {
   Merge* impl_obj = static_cast< Merge *>(impl_obj_void);
-  /*Unmarshall pup'd fields: int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4*/
+  /*Unmarshall pup'd fields: int a, int b, int c, int n, const int *val, int d*/
   PUP::fromMem implP(impl_buf);
-  int impl_noname_0; implP|impl_noname_0;
-  int impl_noname_1; implP|impl_noname_1;
-  int impl_noname_2; implP|impl_noname_2;
+  int a; implP|a;
+  int b; implP|b;
+  int c; implP|c;
+  int n; implP|n;
   int impl_off_val, impl_cnt_val; 
   implP|impl_off_val;
   implP|impl_cnt_val;
-  int impl_noname_3; implP|impl_noname_3;
-  int impl_noname_4; implP|impl_noname_4;
+  int d; implP|d;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
   int *val=(int *)(impl_buf+impl_off_val);
-  impl_obj->initPhase(impl_noname_0, impl_noname_1, impl_noname_2, val, impl_noname_3, impl_noname_4);
+  impl_obj->initPhase(a, b, c, n, val, d);
   return implP.size();
 }
 
 void CkIndex_Merge::_marshallmessagepup_initPhase_marshall2(PUP::er &implDestP,void *impl_msg) {
   CkMarshallMsg *impl_msg_typed=(CkMarshallMsg *)impl_msg;
   char *impl_buf=impl_msg_typed->msgBuf;
-  /*Unmarshall pup'd fields: int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4*/
+  /*Unmarshall pup'd fields: int a, int b, int c, int n, const int *val, int d*/
   PUP::fromMem implP(impl_buf);
-  int impl_noname_0; implP|impl_noname_0;
-  int impl_noname_1; implP|impl_noname_1;
-  int impl_noname_2; implP|impl_noname_2;
+  int a; implP|a;
+  int b; implP|b;
+  int c; implP|c;
+  int n; implP|n;
   int impl_off_val, impl_cnt_val; 
   implP|impl_off_val;
   implP|impl_cnt_val;
-  int impl_noname_3; implP|impl_noname_3;
-  int impl_noname_4; implP|impl_noname_4;
+  int d; implP|d;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
   int *val=(int *)(impl_buf+impl_off_val);
-  if (implDestP.hasComments()) implDestP.comment("impl_noname_0");
-  implDestP|impl_noname_0;
-  if (implDestP.hasComments()) implDestP.comment("impl_noname_1");
-  implDestP|impl_noname_1;
-  if (implDestP.hasComments()) implDestP.comment("impl_noname_2");
-  implDestP|impl_noname_2;
+  if (implDestP.hasComments()) implDestP.comment("a");
+  implDestP|a;
+  if (implDestP.hasComments()) implDestP.comment("b");
+  implDestP|b;
+  if (implDestP.hasComments()) implDestP.comment("c");
+  implDestP|c;
+  if (implDestP.hasComments()) implDestP.comment("n");
+  implDestP|n;
   if (implDestP.hasComments()) implDestP.comment("val");
   implDestP.synchronize(PUP::sync_begin_array);
   { for (int impl_i=0;impl_i*(sizeof(*val))<impl_cnt_val;impl_i++) { 
@@ -595,32 +597,30 @@ void CkIndex_Merge::_marshallmessagepup_initPhase_marshall2(PUP::er &implDestP,v
       implDestP|val[impl_i];
   } } 
   implDestP.synchronize(PUP::sync_end_array);
-  if (implDestP.hasComments()) implDestP.comment("impl_noname_3");
-  implDestP|impl_noname_3;
-  if (implDestP.hasComments()) implDestP.comment("impl_noname_4");
-  implDestP|impl_noname_4;
+  if (implDestP.hasComments()) implDestP.comment("d");
+  implDestP|d;
 }
 PUPable_def(SINGLE_ARG(Closure_Merge::initPhase_2_closure))
 #endif /* CK_TEMPLATES_ONLY */
 
 #ifndef CK_TEMPLATES_ONLY
-/* DEFS: void startCompare(int impl_noname_5);
+/* DEFS: void startCompare(int a);
  */
 
-void CProxy_Merge::startCompare(int impl_noname_5, const CkEntryOptions *impl_e_opts) 
+void CProxy_Merge::startCompare(int a, const CkEntryOptions *impl_e_opts) 
 {
   ckCheck();
-  //Marshall: int impl_noname_5
+  //Marshall: int a
   int impl_off=0;
   { //Find the size of the PUP'd data
     PUP::sizer implP;
-    implP|impl_noname_5;
+    implP|a;
     impl_off+=implP.size();
   }
   CkMarshallMsg *impl_msg=CkAllocateMarshallMsg(impl_off,impl_e_opts);
   { //Copy over the PUP'd data
     PUP::toMem implP((void *)impl_msg->msgBuf);
-    implP|impl_noname_5;
+    implP|a;
   }
   UsrToEnv(impl_msg)->setMsgtype(ForArrayEltMsg);
   CkArrayMessage *impl_amsg=(CkArrayMessage *)impl_msg;
@@ -631,7 +631,7 @@ void CProxy_Merge::startCompare(int impl_noname_5, const CkEntryOptions *impl_e_
 // Entry point registration function
 
 int CkIndex_Merge::reg_startCompare_marshall3() {
-  int epidx = CkRegisterEp("startCompare(int impl_noname_5)",
+  int epidx = CkRegisterEp("startCompare(int a)",
       _call_startCompare_marshall3, CkMarshallMsg::__idx, __idx, 0+CK_EP_NOKEEP);
   CkRegisterMarshallUnpackFn(epidx, _callmarshall_startCompare_marshall3);
   CkRegisterMessagePupFn(epidx, _marshallmessagepup_startCompare_marshall3);
@@ -645,61 +645,61 @@ void CkIndex_Merge::_call_startCompare_marshall3(void* impl_msg, void* impl_obj_
   Merge* impl_obj = static_cast<Merge *>(impl_obj_void);
   CkMarshallMsg *impl_msg_typed=(CkMarshallMsg *)impl_msg;
   char *impl_buf=impl_msg_typed->msgBuf;
-  /*Unmarshall pup'd fields: int impl_noname_5*/
+  /*Unmarshall pup'd fields: int a*/
   PUP::fromMem implP(impl_buf);
-  int impl_noname_5; implP|impl_noname_5;
+  int a; implP|a;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
-  impl_obj->startCompare(impl_noname_5);
+  impl_obj->startCompare(a);
 }
 
 int CkIndex_Merge::_callmarshall_startCompare_marshall3(char* impl_buf, void* impl_obj_void) {
   Merge* impl_obj = static_cast< Merge *>(impl_obj_void);
-  /*Unmarshall pup'd fields: int impl_noname_5*/
+  /*Unmarshall pup'd fields: int a*/
   PUP::fromMem implP(impl_buf);
-  int impl_noname_5; implP|impl_noname_5;
+  int a; implP|a;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
-  impl_obj->startCompare(impl_noname_5);
+  impl_obj->startCompare(a);
   return implP.size();
 }
 
 void CkIndex_Merge::_marshallmessagepup_startCompare_marshall3(PUP::er &implDestP,void *impl_msg) {
   CkMarshallMsg *impl_msg_typed=(CkMarshallMsg *)impl_msg;
   char *impl_buf=impl_msg_typed->msgBuf;
-  /*Unmarshall pup'd fields: int impl_noname_5*/
+  /*Unmarshall pup'd fields: int a*/
   PUP::fromMem implP(impl_buf);
-  int impl_noname_5; implP|impl_noname_5;
+  int a; implP|a;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
-  if (implDestP.hasComments()) implDestP.comment("impl_noname_5");
-  implDestP|impl_noname_5;
+  if (implDestP.hasComments()) implDestP.comment("a");
+  implDestP|a;
 }
 PUPable_def(SINGLE_ARG(Closure_Merge::startCompare_3_closure))
 #endif /* CK_TEMPLATES_ONLY */
 
 #ifndef CK_TEMPLATES_ONLY
-/* DEFS: void requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8);
+/* DEFS: void requestSwap(int a, int b, int c);
  */
 
-void CProxy_Merge::requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8, const CkEntryOptions *impl_e_opts) 
+void CProxy_Merge::requestSwap(int a, int b, int c, const CkEntryOptions *impl_e_opts) 
 {
   ckCheck();
-  //Marshall: int impl_noname_6, int impl_noname_7, int impl_noname_8
+  //Marshall: int a, int b, int c
   int impl_off=0;
   { //Find the size of the PUP'd data
     PUP::sizer implP;
-    implP|impl_noname_6;
-    implP|impl_noname_7;
-    implP|impl_noname_8;
+    implP|a;
+    implP|b;
+    implP|c;
     impl_off+=implP.size();
   }
   CkMarshallMsg *impl_msg=CkAllocateMarshallMsg(impl_off,impl_e_opts);
   { //Copy over the PUP'd data
     PUP::toMem implP((void *)impl_msg->msgBuf);
-    implP|impl_noname_6;
-    implP|impl_noname_7;
-    implP|impl_noname_8;
+    implP|a;
+    implP|b;
+    implP|c;
   }
   UsrToEnv(impl_msg)->setMsgtype(ForArrayEltMsg);
   CkArrayMessage *impl_amsg=(CkArrayMessage *)impl_msg;
@@ -710,7 +710,7 @@ void CProxy_Merge::requestSwap(int impl_noname_6, int impl_noname_7, int impl_no
 // Entry point registration function
 
 int CkIndex_Merge::reg_requestSwap_marshall4() {
-  int epidx = CkRegisterEp("requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8)",
+  int epidx = CkRegisterEp("requestSwap(int a, int b, int c)",
       _call_requestSwap_marshall4, CkMarshallMsg::__idx, __idx, 0+CK_EP_NOKEEP);
   CkRegisterMarshallUnpackFn(epidx, _callmarshall_requestSwap_marshall4);
   CkRegisterMessagePupFn(epidx, _marshallmessagepup_requestSwap_marshall4);
@@ -724,69 +724,69 @@ void CkIndex_Merge::_call_requestSwap_marshall4(void* impl_msg, void* impl_obj_v
   Merge* impl_obj = static_cast<Merge *>(impl_obj_void);
   CkMarshallMsg *impl_msg_typed=(CkMarshallMsg *)impl_msg;
   char *impl_buf=impl_msg_typed->msgBuf;
-  /*Unmarshall pup'd fields: int impl_noname_6, int impl_noname_7, int impl_noname_8*/
+  /*Unmarshall pup'd fields: int a, int b, int c*/
   PUP::fromMem implP(impl_buf);
-  int impl_noname_6; implP|impl_noname_6;
-  int impl_noname_7; implP|impl_noname_7;
-  int impl_noname_8; implP|impl_noname_8;
+  int a; implP|a;
+  int b; implP|b;
+  int c; implP|c;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
-  impl_obj->requestSwap(impl_noname_6, impl_noname_7, impl_noname_8);
+  impl_obj->requestSwap(a, b, c);
 }
 
 int CkIndex_Merge::_callmarshall_requestSwap_marshall4(char* impl_buf, void* impl_obj_void) {
   Merge* impl_obj = static_cast< Merge *>(impl_obj_void);
-  /*Unmarshall pup'd fields: int impl_noname_6, int impl_noname_7, int impl_noname_8*/
+  /*Unmarshall pup'd fields: int a, int b, int c*/
   PUP::fromMem implP(impl_buf);
-  int impl_noname_6; implP|impl_noname_6;
-  int impl_noname_7; implP|impl_noname_7;
-  int impl_noname_8; implP|impl_noname_8;
+  int a; implP|a;
+  int b; implP|b;
+  int c; implP|c;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
-  impl_obj->requestSwap(impl_noname_6, impl_noname_7, impl_noname_8);
+  impl_obj->requestSwap(a, b, c);
   return implP.size();
 }
 
 void CkIndex_Merge::_marshallmessagepup_requestSwap_marshall4(PUP::er &implDestP,void *impl_msg) {
   CkMarshallMsg *impl_msg_typed=(CkMarshallMsg *)impl_msg;
   char *impl_buf=impl_msg_typed->msgBuf;
-  /*Unmarshall pup'd fields: int impl_noname_6, int impl_noname_7, int impl_noname_8*/
+  /*Unmarshall pup'd fields: int a, int b, int c*/
   PUP::fromMem implP(impl_buf);
-  int impl_noname_6; implP|impl_noname_6;
-  int impl_noname_7; implP|impl_noname_7;
-  int impl_noname_8; implP|impl_noname_8;
+  int a; implP|a;
+  int b; implP|b;
+  int c; implP|c;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
-  if (implDestP.hasComments()) implDestP.comment("impl_noname_6");
-  implDestP|impl_noname_6;
-  if (implDestP.hasComments()) implDestP.comment("impl_noname_7");
-  implDestP|impl_noname_7;
-  if (implDestP.hasComments()) implDestP.comment("impl_noname_8");
-  implDestP|impl_noname_8;
+  if (implDestP.hasComments()) implDestP.comment("a");
+  implDestP|a;
+  if (implDestP.hasComments()) implDestP.comment("b");
+  implDestP|b;
+  if (implDestP.hasComments()) implDestP.comment("c");
+  implDestP|c;
 }
 PUPable_def(SINGLE_ARG(Closure_Merge::requestSwap_4_closure))
 #endif /* CK_TEMPLATES_ONLY */
 
 #ifndef CK_TEMPLATES_ONLY
-/* DEFS: void saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a);
+/* DEFS: void saveValue(const int *val, int m, const bool &a);
  */
 
-void CProxy_Merge::saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a, const CkEntryOptions *impl_e_opts) 
+void CProxy_Merge::saveValue(const int *val, int m, const bool &a, const CkEntryOptions *impl_e_opts) 
 {
   ckCheck();
-  //Marshall: const int *val, int impl_noname_9, const bool &impl_noname_a
+  //Marshall: const int *val, int m, const bool &a
   int impl_off=0;
   int impl_arrstart=0;
   int impl_off_val, impl_cnt_val;
   impl_off_val=impl_off=CK_ALIGN(impl_off,sizeof(int));
-  impl_off+=(impl_cnt_val=sizeof(int)*(numElements));
+  impl_off+=(impl_cnt_val=sizeof(int)*(m));
   { //Find the size of the PUP'd data
     PUP::sizer implP;
     implP|impl_off_val;
     implP|impl_cnt_val;
-    implP|impl_noname_9;
+    implP|m;
     //Have to cast away const-ness to get pup routine
-    implP|(bool &)impl_noname_a;
+    implP|(bool &)a;
     impl_arrstart=CK_ALIGN(implP.size(),16);
     impl_off+=impl_arrstart;
   }
@@ -795,9 +795,9 @@ void CProxy_Merge::saveValue(const int *val, int impl_noname_9, const bool &impl
     PUP::toMem implP((void *)impl_msg->msgBuf);
     implP|impl_off_val;
     implP|impl_cnt_val;
-    implP|impl_noname_9;
+    implP|m;
     //Have to cast away const-ness to get pup routine
-    implP|(bool &)impl_noname_a;
+    implP|(bool &)a;
   }
   char *impl_buf=impl_msg->msgBuf+impl_arrstart;
   memcpy(impl_buf+impl_off_val,val,impl_cnt_val);
@@ -810,7 +810,7 @@ void CProxy_Merge::saveValue(const int *val, int impl_noname_9, const bool &impl
 // Entry point registration function
 
 int CkIndex_Merge::reg_saveValue_marshall5() {
-  int epidx = CkRegisterEp("saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a)",
+  int epidx = CkRegisterEp("saveValue(const int *val, int m, const bool &a)",
       _call_saveValue_marshall5, CkMarshallMsg::__idx, __idx, 0+CK_EP_NOKEEP);
   CkRegisterMarshallUnpackFn(epidx, _callmarshall_saveValue_marshall5);
   CkRegisterMessagePupFn(epidx, _marshallmessagepup_saveValue_marshall5);
@@ -824,45 +824,45 @@ void CkIndex_Merge::_call_saveValue_marshall5(void* impl_msg, void* impl_obj_voi
   Merge* impl_obj = static_cast<Merge *>(impl_obj_void);
   CkMarshallMsg *impl_msg_typed=(CkMarshallMsg *)impl_msg;
   char *impl_buf=impl_msg_typed->msgBuf;
-  /*Unmarshall pup'd fields: const int *val, int impl_noname_9, const bool &impl_noname_a*/
+  /*Unmarshall pup'd fields: const int *val, int m, const bool &a*/
   PUP::fromMem implP(impl_buf);
   int impl_off_val, impl_cnt_val; 
   implP|impl_off_val;
   implP|impl_cnt_val;
-  int impl_noname_9; implP|impl_noname_9;
-  bool impl_noname_a; implP|impl_noname_a;
+  int m; implP|m;
+  bool a; implP|a;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
   int *val=(int *)(impl_buf+impl_off_val);
-  impl_obj->saveValue(val, impl_noname_9, impl_noname_a);
+  impl_obj->saveValue(val, m, a);
 }
 
 int CkIndex_Merge::_callmarshall_saveValue_marshall5(char* impl_buf, void* impl_obj_void) {
   Merge* impl_obj = static_cast< Merge *>(impl_obj_void);
-  /*Unmarshall pup'd fields: const int *val, int impl_noname_9, const bool &impl_noname_a*/
+  /*Unmarshall pup'd fields: const int *val, int m, const bool &a*/
   PUP::fromMem implP(impl_buf);
   int impl_off_val, impl_cnt_val; 
   implP|impl_off_val;
   implP|impl_cnt_val;
-  int impl_noname_9; implP|impl_noname_9;
-  bool impl_noname_a; implP|impl_noname_a;
+  int m; implP|m;
+  bool a; implP|a;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
   int *val=(int *)(impl_buf+impl_off_val);
-  impl_obj->saveValue(val, impl_noname_9, impl_noname_a);
+  impl_obj->saveValue(val, m, a);
   return implP.size();
 }
 
 void CkIndex_Merge::_marshallmessagepup_saveValue_marshall5(PUP::er &implDestP,void *impl_msg) {
   CkMarshallMsg *impl_msg_typed=(CkMarshallMsg *)impl_msg;
   char *impl_buf=impl_msg_typed->msgBuf;
-  /*Unmarshall pup'd fields: const int *val, int impl_noname_9, const bool &impl_noname_a*/
+  /*Unmarshall pup'd fields: const int *val, int m, const bool &a*/
   PUP::fromMem implP(impl_buf);
   int impl_off_val, impl_cnt_val; 
   implP|impl_off_val;
   implP|impl_cnt_val;
-  int impl_noname_9; implP|impl_noname_9;
-  bool impl_noname_a; implP|impl_noname_a;
+  int m; implP|m;
+  bool a; implP|a;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
   int *val=(int *)(impl_buf+impl_off_val);
@@ -873,10 +873,10 @@ void CkIndex_Merge::_marshallmessagepup_saveValue_marshall5(PUP::er &implDestP,v
       implDestP|val[impl_i];
   } } 
   implDestP.synchronize(PUP::sync_end_array);
-  if (implDestP.hasComments()) implDestP.comment("impl_noname_9");
-  implDestP|impl_noname_9;
-  if (implDestP.hasComments()) implDestP.comment("impl_noname_a");
-  implDestP|impl_noname_a;
+  if (implDestP.hasComments()) implDestP.comment("m");
+  implDestP|m;
+  if (implDestP.hasComments()) implDestP.comment("a");
+  implDestP|a;
 }
 PUPable_def(SINGLE_ARG(Closure_Merge::saveValue_5_closure))
 #endif /* CK_TEMPLATES_ONLY */
@@ -971,40 +971,40 @@ void CkIndex_Merge::_call_Merge_CkMigrateMessage(void* impl_msg, void* impl_obj_
 #endif /* CK_TEMPLATES_ONLY */
 
 #ifndef CK_TEMPLATES_ONLY
-/* DEFS: void initPhase(int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4);
+/* DEFS: void initPhase(int a, int b, int c, int n, const int *val, int d);
  */
 
-void CProxySection_Merge::initPhase(int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4, const CkEntryOptions *impl_e_opts) 
+void CProxySection_Merge::initPhase(int a, int b, int c, int n, const int *val, int d, const CkEntryOptions *impl_e_opts) 
 {
   ckCheck();
-  //Marshall: int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4
+  //Marshall: int a, int b, int c, int n, const int *val, int d
   int impl_off=0;
   int impl_arrstart=0;
   int impl_off_val, impl_cnt_val;
   impl_off_val=impl_off=CK_ALIGN(impl_off,sizeof(int));
-  impl_off+=(impl_cnt_val=sizeof(int)*(numElements));
+  impl_off+=(impl_cnt_val=sizeof(int)*(n));
   { //Find the size of the PUP'd data
     PUP::sizer implP;
-    implP|impl_noname_0;
-    implP|impl_noname_1;
-    implP|impl_noname_2;
+    implP|a;
+    implP|b;
+    implP|c;
+    implP|n;
     implP|impl_off_val;
     implP|impl_cnt_val;
-    implP|impl_noname_3;
-    implP|impl_noname_4;
+    implP|d;
     impl_arrstart=CK_ALIGN(implP.size(),16);
     impl_off+=impl_arrstart;
   }
   CkMarshallMsg *impl_msg=CkAllocateMarshallMsg(impl_off,impl_e_opts);
   { //Copy over the PUP'd data
     PUP::toMem implP((void *)impl_msg->msgBuf);
-    implP|impl_noname_0;
-    implP|impl_noname_1;
-    implP|impl_noname_2;
+    implP|a;
+    implP|b;
+    implP|c;
+    implP|n;
     implP|impl_off_val;
     implP|impl_cnt_val;
-    implP|impl_noname_3;
-    implP|impl_noname_4;
+    implP|d;
   }
   char *impl_buf=impl_msg->msgBuf+impl_arrstart;
   memcpy(impl_buf+impl_off_val,val,impl_cnt_val);
@@ -1016,23 +1016,23 @@ void CProxySection_Merge::initPhase(int impl_noname_0, int impl_noname_1, int im
 #endif /* CK_TEMPLATES_ONLY */
 
 #ifndef CK_TEMPLATES_ONLY
-/* DEFS: void startCompare(int impl_noname_5);
+/* DEFS: void startCompare(int a);
  */
 
-void CProxySection_Merge::startCompare(int impl_noname_5, const CkEntryOptions *impl_e_opts) 
+void CProxySection_Merge::startCompare(int a, const CkEntryOptions *impl_e_opts) 
 {
   ckCheck();
-  //Marshall: int impl_noname_5
+  //Marshall: int a
   int impl_off=0;
   { //Find the size of the PUP'd data
     PUP::sizer implP;
-    implP|impl_noname_5;
+    implP|a;
     impl_off+=implP.size();
   }
   CkMarshallMsg *impl_msg=CkAllocateMarshallMsg(impl_off,impl_e_opts);
   { //Copy over the PUP'd data
     PUP::toMem implP((void *)impl_msg->msgBuf);
-    implP|impl_noname_5;
+    implP|a;
   }
   UsrToEnv(impl_msg)->setMsgtype(ForArrayEltMsg);
   CkArrayMessage *impl_amsg=(CkArrayMessage *)impl_msg;
@@ -1042,27 +1042,27 @@ void CProxySection_Merge::startCompare(int impl_noname_5, const CkEntryOptions *
 #endif /* CK_TEMPLATES_ONLY */
 
 #ifndef CK_TEMPLATES_ONLY
-/* DEFS: void requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8);
+/* DEFS: void requestSwap(int a, int b, int c);
  */
 
-void CProxySection_Merge::requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8, const CkEntryOptions *impl_e_opts) 
+void CProxySection_Merge::requestSwap(int a, int b, int c, const CkEntryOptions *impl_e_opts) 
 {
   ckCheck();
-  //Marshall: int impl_noname_6, int impl_noname_7, int impl_noname_8
+  //Marshall: int a, int b, int c
   int impl_off=0;
   { //Find the size of the PUP'd data
     PUP::sizer implP;
-    implP|impl_noname_6;
-    implP|impl_noname_7;
-    implP|impl_noname_8;
+    implP|a;
+    implP|b;
+    implP|c;
     impl_off+=implP.size();
   }
   CkMarshallMsg *impl_msg=CkAllocateMarshallMsg(impl_off,impl_e_opts);
   { //Copy over the PUP'd data
     PUP::toMem implP((void *)impl_msg->msgBuf);
-    implP|impl_noname_6;
-    implP|impl_noname_7;
-    implP|impl_noname_8;
+    implP|a;
+    implP|b;
+    implP|c;
   }
   UsrToEnv(impl_msg)->setMsgtype(ForArrayEltMsg);
   CkArrayMessage *impl_amsg=(CkArrayMessage *)impl_msg;
@@ -1072,25 +1072,25 @@ void CProxySection_Merge::requestSwap(int impl_noname_6, int impl_noname_7, int 
 #endif /* CK_TEMPLATES_ONLY */
 
 #ifndef CK_TEMPLATES_ONLY
-/* DEFS: void saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a);
+/* DEFS: void saveValue(const int *val, int m, const bool &a);
  */
 
-void CProxySection_Merge::saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a, const CkEntryOptions *impl_e_opts) 
+void CProxySection_Merge::saveValue(const int *val, int m, const bool &a, const CkEntryOptions *impl_e_opts) 
 {
   ckCheck();
-  //Marshall: const int *val, int impl_noname_9, const bool &impl_noname_a
+  //Marshall: const int *val, int m, const bool &a
   int impl_off=0;
   int impl_arrstart=0;
   int impl_off_val, impl_cnt_val;
   impl_off_val=impl_off=CK_ALIGN(impl_off,sizeof(int));
-  impl_off+=(impl_cnt_val=sizeof(int)*(numElements));
+  impl_off+=(impl_cnt_val=sizeof(int)*(m));
   { //Find the size of the PUP'd data
     PUP::sizer implP;
     implP|impl_off_val;
     implP|impl_cnt_val;
-    implP|impl_noname_9;
+    implP|m;
     //Have to cast away const-ness to get pup routine
-    implP|(bool &)impl_noname_a;
+    implP|(bool &)a;
     impl_arrstart=CK_ALIGN(implP.size(),16);
     impl_off+=impl_arrstart;
   }
@@ -1099,9 +1099,9 @@ void CProxySection_Merge::saveValue(const int *val, int impl_noname_9, const boo
     PUP::toMem implP((void *)impl_msg->msgBuf);
     implP|impl_off_val;
     implP|impl_cnt_val;
-    implP|impl_noname_9;
+    implP|m;
     //Have to cast away const-ness to get pup routine
-    implP|(bool &)impl_noname_a;
+    implP|(bool &)a;
   }
   char *impl_buf=impl_msg->msgBuf+impl_arrstart;
   memcpy(impl_buf+impl_off_val,val,impl_cnt_val);
@@ -1157,16 +1157,16 @@ void CkIndex_Merge::__register(const char *s, size_t size) {
   idx_Merge_void();
   CkRegisterDefaultCtor(__idx, idx_Merge_void());
 
-  // REG: void initPhase(int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4);
+  // REG: void initPhase(int a, int b, int c, int n, const int *val, int d);
   idx_initPhase_marshall2();
 
-  // REG: void startCompare(int impl_noname_5);
+  // REG: void startCompare(int a);
   idx_startCompare_marshall3();
 
-  // REG: void requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8);
+  // REG: void requestSwap(int a, int b, int c);
   idx_requestSwap_marshall4();
 
-  // REG: void saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a);
+  // REG: void saveValue(const int *val, int m, const bool &a);
   idx_saveValue_marshall5();
 
   // REG: void check(void);
@@ -1188,10 +1188,10 @@ void _registermerge(void)
   static int _done = 0; if(_done) return; _done = 1;
 /* REG: array Merge: ArrayElement{
 Merge(void);
-void initPhase(int impl_noname_0, int impl_noname_1, int impl_noname_2, const int *val, int impl_noname_3, int impl_noname_4);
-void startCompare(int impl_noname_5);
-void requestSwap(int impl_noname_6, int impl_noname_7, int impl_noname_8);
-void saveValue(const int *val, int impl_noname_9, const bool &impl_noname_a);
+void initPhase(int a, int b, int c, int n, const int *val, int d);
+void startCompare(int a);
+void requestSwap(int a, int b, int c);
+void saveValue(const int *val, int m, const bool &a);
 void check(void);
 void listo(void);
 Merge(CkMigrateMessage* impl_msg);

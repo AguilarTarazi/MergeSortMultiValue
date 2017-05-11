@@ -24,7 +24,7 @@ class Main : public CBase_Main {
   Main(CkMigrateMessage* msg);
 
   /// Entry Methods ///
-  void terminar(int []);
+  void terminar(int,int []);
   void barrier();
   // void enviarCb(CkCallbackResumeThread &);
 };

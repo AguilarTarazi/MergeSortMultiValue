@@ -9,6 +9,7 @@
 #ifndef CK_TEMPLATES_ONLY
 
     struct Closure_Main::terminar_2_closure : public SDAG::Closure {
+      int n;
       int *values;
 
       CkMarshallMsg* _impl_marshall;
@@ -27,8 +28,10 @@
         _impl_buf_in = 0;
         _impl_buf_size = 0;
       }
-      int *& getP0() { return values;}
+      int & getP0() { return n;}
+      int *& getP1() { return values;}
       void pup(PUP::er& __p) {
+        __p | n;
         packClosure(__p);
         __p | _impl_buf_size;
         bool hasMsg = (_impl_marshall != 0); __p | hasMsg;
@@ -37,6 +40,7 @@
         if (__p.isUnpacking()) {
           char *impl_buf = _impl_marshall ? _impl_marshall->msgBuf : _impl_buf_in;
           PUP::fromMem implP(impl_buf);
+  int n; implP|n;
   int impl_off_values, impl_cnt_values; 
   implP|impl_off_values;
   implP|impl_cnt_values;
@@ -106,7 +110,7 @@ extern "C" void __xlater_roPup_cantChares(void *_impl_pup_er) {
 
 /* DEFS: mainchare Main: Chare{
 Main(CkArgMsg* impl_msg);
-void terminar(const int *values);
+void terminar(int n, const int *values);
 void barrier(void);
 };
  */
@@ -154,20 +158,21 @@ void CkIndex_Main::_call_Main_CkArgMsg(void* impl_msg, void* impl_obj_void)
 #endif /* CK_TEMPLATES_ONLY */
 
 #ifndef CK_TEMPLATES_ONLY
-/* DEFS: void terminar(const int *values);
+/* DEFS: void terminar(int n, const int *values);
  */
 
-void CProxy_Main::terminar(const int *values, const CkEntryOptions *impl_e_opts)
+void CProxy_Main::terminar(int n, const int *values, const CkEntryOptions *impl_e_opts)
 {
   ckCheck();
-  //Marshall: const int *values
+  //Marshall: int n, const int *values
   int impl_off=0;
   int impl_arrstart=0;
   int impl_off_values, impl_cnt_values;
   impl_off_values=impl_off=CK_ALIGN(impl_off,sizeof(int));
-  impl_off+=(impl_cnt_values=sizeof(int)*(numElements));
+  impl_off+=(impl_cnt_values=sizeof(int)*(n));
   { //Find the size of the PUP'd data
     PUP::sizer implP;
+    implP|n;
     implP|impl_off_values;
     implP|impl_cnt_values;
     impl_arrstart=CK_ALIGN(implP.size(),16);
@@ -176,6 +181,7 @@ void CProxy_Main::terminar(const int *values, const CkEntryOptions *impl_e_opts)
   CkMarshallMsg *impl_msg=CkAllocateMarshallMsg(impl_off,impl_e_opts);
   { //Copy over the PUP'd data
     PUP::toMem implP((void *)impl_msg->msgBuf);
+    implP|n;
     implP|impl_off_values;
     implP|impl_cnt_values;
   }
@@ -191,7 +197,7 @@ void CProxy_Main::terminar(const int *values, const CkEntryOptions *impl_e_opts)
 // Entry point registration function
 
 int CkIndex_Main::reg_terminar_marshall2() {
-  int epidx = CkRegisterEp("terminar(const int *values)",
+  int epidx = CkRegisterEp("terminar(int n, const int *values)",
       _call_terminar_marshall2, CkMarshallMsg::__idx, __idx, 0+CK_EP_NOKEEP);
   CkRegisterMarshallUnpackFn(epidx, _callmarshall_terminar_marshall2);
   CkRegisterMessagePupFn(epidx, _marshallmessagepup_terminar_marshall2);
@@ -205,42 +211,47 @@ void CkIndex_Main::_call_terminar_marshall2(void* impl_msg, void* impl_obj_void)
   Main* impl_obj = static_cast<Main *>(impl_obj_void);
   CkMarshallMsg *impl_msg_typed=(CkMarshallMsg *)impl_msg;
   char *impl_buf=impl_msg_typed->msgBuf;
-  /*Unmarshall pup'd fields: const int *values*/
+  /*Unmarshall pup'd fields: int n, const int *values*/
   PUP::fromMem implP(impl_buf);
+  int n; implP|n;
   int impl_off_values, impl_cnt_values; 
   implP|impl_off_values;
   implP|impl_cnt_values;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
   int *values=(int *)(impl_buf+impl_off_values);
-  impl_obj->terminar(values);
+  impl_obj->terminar(n, values);
 }
 
 int CkIndex_Main::_callmarshall_terminar_marshall2(char* impl_buf, void* impl_obj_void) {
   Main* impl_obj = static_cast< Main *>(impl_obj_void);
-  /*Unmarshall pup'd fields: const int *values*/
+  /*Unmarshall pup'd fields: int n, const int *values*/
   PUP::fromMem implP(impl_buf);
+  int n; implP|n;
   int impl_off_values, impl_cnt_values; 
   implP|impl_off_values;
   implP|impl_cnt_values;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
   int *values=(int *)(impl_buf+impl_off_values);
-  impl_obj->terminar(values);
+  impl_obj->terminar(n, values);
   return implP.size();
 }
 
 void CkIndex_Main::_marshallmessagepup_terminar_marshall2(PUP::er &implDestP,void *impl_msg) {
   CkMarshallMsg *impl_msg_typed=(CkMarshallMsg *)impl_msg;
   char *impl_buf=impl_msg_typed->msgBuf;
-  /*Unmarshall pup'd fields: const int *values*/
+  /*Unmarshall pup'd fields: int n, const int *values*/
   PUP::fromMem implP(impl_buf);
+  int n; implP|n;
   int impl_off_values, impl_cnt_values; 
   implP|impl_off_values;
   implP|impl_cnt_values;
   impl_buf+=CK_ALIGN(implP.size(),16);
   /*Unmarshall arrays:*/
   int *values=(int *)(impl_buf+impl_off_values);
+  if (implDestP.hasComments()) implDestP.comment("n");
+  implDestP|n;
   if (implDestP.hasComments()) implDestP.comment("values");
   implDestP.synchronize(PUP::sync_begin_array);
   { for (int impl_i=0;impl_i*(sizeof(*values))<impl_cnt_values;impl_i++) { 
@@ -295,7 +306,7 @@ void CkIndex_Main::__register(const char *s, size_t size) {
   idx_Main_CkArgMsg();
   CkRegisterMainChare(__idx, idx_Main_CkArgMsg());
 
-  // REG: void terminar(const int *values);
+  // REG: void terminar(int n, const int *values);
   idx_terminar_marshall2();
 
   // REG: void barrier(void);
@@ -319,7 +330,7 @@ void _registermain(void)
 
 /* REG: mainchare Main: Chare{
 Main(CkArgMsg* impl_msg);
-void terminar(const int *values);
+void terminar(int n, const int *values);
 void barrier(void);
 };
 */

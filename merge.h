@@ -9,7 +9,7 @@ class Merge : public CBase_Merge {
   int indexLlamoIzq, accion, primero, cantFases, elementos;
   bool activo,noValues;
   int *myValues;
-  int comparar[15];
+  int comparar[30];
   int numElementsLocal;
   /// Member Functions (private) ///
   void sort(int,int,int[]);
@@ -23,7 +23,7 @@ class Merge : public CBase_Merge {
   Merge(CkMigrateMessage *msg);
 
   /// Entry Methods ///
-  void initPhase(int,int,int,int[],int,int);
+  void initPhase(int,int,int,int,int[],int);
   void startCompare(int);
   void requestSwap(int,int,int);
   // void acceptSwap(int [],int);

@@ -35,16 +35,22 @@ Main::Main(CkArgMsg* msg) {
         CkExit();
     }
     CkPrintf("\nCANTIDAD DE CHARES: %d\nCANTIDAD DE ELEMENTOS CHARE: %d\n",cantChares,numElements);
-    values = (int *)calloc(numElements,sizeof(int));
+    values = (int *)malloc(numElements*sizeof(int));
+    if(values == NULL){
+        CkPrintf("values es NULL\n");
+        CkExit();
+    }
     // values = (int *)malloc(sizeof(int)*numElements);
     for(int i=0;i<numElements;i++){
-        value = i+1; //Ascendente
-        // value = rand() % 10000; //Aleatorio
+        value = i; //Ascendente
+        value = rand() % 100000; //Aleatorio
         // value = numElements-i; //Descendente
         values[i] = value;
-        // CkPrintf("Before: Merge[%d]: %d\n",i,values[i]);
     }
     // We are done with msg so delete it.
+    for(int i=numElements-10;i<numElements;i++)
+        CkPrintf("Before: Merge[%d]: %d\n",i,values[i]);
+
     delete msg;
 
     // Set the mainProxy readonly to point to a
@@ -53,6 +59,7 @@ Main::Main(CkArgMsg* msg) {
     mainProxy = thisProxy;
 
     // Create the array of Merge chare objects.
+    // CkPrintf("HELLO\n");
     mergeArray = CProxy_Merge::ckNew(cantChares);
 
     startNextPhase();
@@ -63,26 +70,42 @@ Main::Main(CkArgMsg* msg) {
 Main::Main(CkMigrateMessage* msg) { }
 
 void Main::startNextPhase() {
+    // CkPrintf("startNextPhase\n");
     // Comienzan su fase (divide) solo el primero y el del medio.
-    int *valuesIzq = (int *)calloc(numElements/2,sizeof(int));
-    int *valuesDer = (int *)calloc(numElements-numElements/2,sizeof(int));
-    // int *valuesIzq = (int *)malloc(sizeof(int)*(numElements/2));
-    // int *valuesDer = (int *)malloc(sizeof(int)*(numElements-numElements/2));
+    // int *valuesIzq = (int *)calloc(numElements/2,sizeof(int));
+    // int *valuesDer = (int *)calloc(numElements-numElements/2,sizeof(int));
+    int *valuesIzq = (int *)malloc(sizeof(int)*(numElements/2));
+    if(valuesIzq == NULL){
+        CkPrintf("valuesIzq es NULL\n");
+        CkExit();
+    }
+    int *valuesDer = (int *)malloc(sizeof(int)*(numElements-numElements/2));
+    if(valuesDer == NULL){
+        CkPrintf("valuesDer es NULL\n");
+        CkExit();
+    }
     memcpy(valuesIzq,values,(numElements/2)*sizeof(int));
     memcpy(valuesDer,values+numElements/2,(numElements-numElements/2)*sizeof(int));
     inicio=CkWallTimer();	//Toma tiempo de inicio
-    mergeArray[0].initPhase(cantChares/2-1,cantChares-1,0,valuesIzq,numElements/2, cantChares/2);
+    mergeArray[0].initPhase(cantChares/2-1,cantChares-1,0,numElements/2,valuesIzq,cantChares/2);
     free(valuesIzq);
-    mergeArray[cantChares/2].initPhase(cantChares-1,-1,0,valuesDer,numElements-numElements/2, -1);
-    free(valuesDer);
+    mergeArray[cantChares/2].initPhase(cantChares-1,-1,0,numElements-numElements/2,valuesDer,-1);
+    // free(valuesDer);
     free(values);
 }
 
-void Main::terminar(int valuesSort[]) {
+void Main::terminar(int tam, int valuesSort[]) {
     fin=CkWallTimer();		//Toma tiempo de fin
-    // for(int i=0;i<numElements;i++){
-        // CkPrintf("After: Merge[%d]=%d\n",i,valuesSort[i]);
-    // }
+    for(int j=0;j<tam-1;j++){
+        // if(valuesSort[j]!=j){
+        //     CkPrintf("No está ordenado\n");
+        //     j=tam;
+        // }
+
+    }
+    for(int i=tam-1000;i<tam;i++){
+        CkPrintf("After: Merge[%d]=%d\n",i,valuesSort[i]);
+    }
     // Exit the program
     CkPrintf("\nTiempo: %f\n\n",fin-inicio);	//Imprime tiempos
     CkExit();
@@ -90,7 +113,7 @@ void Main::terminar(int valuesSort[]) {
 
 void Main::barrier(){
     cantCheck++;
-    CkPrintf("cantCheck: %d\n",cantCheck);
+    // CkPrintf("cantCheck: %d\n",cantCheck);
     if(cantCheck==cantChares){
         CkPrintf("LISTO\n");
         mergeArray.listo();

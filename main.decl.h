@@ -17,7 +17,7 @@
 
 /* DECLS: mainchare Main: Chare{
 Main(CkArgMsg* impl_msg);
-void terminar(const int *values);
+void terminar(int n, const int *values);
 void barrier(void);
 };
  */
@@ -52,7 +52,7 @@ class CkIndex_Main:public CkIndex_Chare{
     static void _call_Main_CkArgMsg(void* impl_msg, void* impl_obj);
     
     static void _call_sdag_Main_CkArgMsg(void* impl_msg, void* impl_obj);
-    /* DECLS: void terminar(const int *values);
+    /* DECLS: void terminar(int n, const int *values);
      */
     // Entry point registration at startup
     
@@ -65,13 +65,13 @@ class CkIndex_Main:public CkIndex_Chare{
     }
 
     
-    inline static int idx_terminar(void (Main::*)(const int *values) ) {
+    inline static int idx_terminar(void (Main::*)(int n, const int *values) ) {
       return idx_terminar_marshall2();
     }
 
 
     
-    static int terminar(const int *values) { return idx_terminar_marshall2(); }
+    static int terminar(int n, const int *values) { return idx_terminar_marshall2(); }
     
     static void _call_terminar_marshall2(void* impl_msg, void* impl_obj);
     
@@ -150,10 +150,10 @@ class CProxy_Main:public CProxy_Chare{
     static void ckNew(CkArgMsg* impl_msg, CkChareID* pcid, int onPE=CK_PE_ANY);
     CProxy_Main(CkArgMsg* impl_msg, int onPE=CK_PE_ANY);
 
-/* DECLS: void terminar(const int *values);
+/* DECLS: void terminar(int n, const int *values);
  */
     
-    void terminar(const int *values, const CkEntryOptions *impl_e_opts=NULL);
+    void terminar(int n, const int *values, const CkEntryOptions *impl_e_opts=NULL);
 
 /* DECLS: void barrier(void);
  */
