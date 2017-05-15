@@ -12,9 +12,9 @@ class Merge : public CBase_Merge {
   int comparar[30];
   int numElementsLocal;
   /// Member Functions (private) ///
-  void sort(int,int,int[]);
-  void merging(int,int,int,int[]);
-  void bubbleSort(int[],int);
+  void sort(int,int);
+  void merging(int,int,int);
+  void bubbleSort(int);
   void insertionSort();
 
  public:

@@ -42,9 +42,9 @@ Main::Main(CkArgMsg* msg) {
     }
     // values = (int *)malloc(sizeof(int)*numElements);
     for(int i=0;i<numElements;i++){
+        value = numElements-i; //Descendente
         value = i; //Ascendente
-        value = rand() % 100000; //Aleatorio
-        // value = numElements-i; //Descendente
+        value = rand() % 10000; //Aleatorio
         values[i] = value;
     }
     // We are done with msg so delete it.
@@ -70,7 +70,6 @@ Main::Main(CkArgMsg* msg) {
 Main::Main(CkMigrateMessage* msg) { }
 
 void Main::startNextPhase() {
-    // CkPrintf("startNextPhase\n");
     // Comienzan su fase (divide) solo el primero y el del medio.
     // int *valuesIzq = (int *)calloc(numElements/2,sizeof(int));
     // int *valuesDer = (int *)calloc(numElements-numElements/2,sizeof(int));
@@ -88,22 +87,25 @@ void Main::startNextPhase() {
     memcpy(valuesDer,values+numElements/2,(numElements-numElements/2)*sizeof(int));
     inicio=CkWallTimer();	//Toma tiempo de inicio
     mergeArray[0].initPhase(cantChares/2-1,cantChares-1,0,numElements/2,valuesIzq,cantChares/2);
-    free(valuesIzq);
     mergeArray[cantChares/2].initPhase(cantChares-1,-1,0,numElements-numElements/2,valuesDer,-1);
-    // free(valuesDer);
+    free(valuesIzq);
+    valuesIzq=NULL;
+    free(valuesDer);
+    valuesDer=NULL;
     free(values);
+
 }
 
 void Main::terminar(int tam, int valuesSort[]) {
     fin=CkWallTimer();		//Toma tiempo de fin
-    for(int j=0;j<tam-1;j++){
-        // if(valuesSort[j]!=j){
-        //     CkPrintf("No está ordenado\n");
-        //     j=tam;
-        // }
-
-    }
-    for(int i=tam-1000;i<tam;i++){
+    // for(int j=0;j<tam-1;j++){
+    //     if(valuesSort[j]!=j){
+    //         CkPrintf("No está ordenado\n");
+    //         j=tam;
+    //     }
+    //
+    // }
+    for(int i=tam-15;i<tam;i++){
         CkPrintf("After: Merge[%d]=%d\n",i,valuesSort[i]);
     }
     // Exit the program
@@ -115,7 +117,7 @@ void Main::barrier(){
     cantCheck++;
     // CkPrintf("cantCheck: %d\n",cantCheck);
     if(cantCheck==cantChares){
-        CkPrintf("LISTO\n");
+        // CkPrintf("LISTO\n");
         mergeArray.listo();
     }
 }
