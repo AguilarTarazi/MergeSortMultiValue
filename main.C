@@ -16,6 +16,7 @@ cantChares como variable de solo lectura
 Main::Main(CkArgMsg* msg) {
     //Initialize member variables
     // Read in any command-line arguments
+    start = CkWallTimer();
     cantCheck = 0;
     numElements = 4;
     cantChares = 4;
@@ -48,8 +49,8 @@ Main::Main(CkArgMsg* msg) {
         values[i] = value;
     }
     // We are done with msg so delete it.
-    for(int i=numElements-10;i<numElements;i++)
-        CkPrintf("Before: Merge[%d]: %d\n",i,values[i]);
+    // for(int i=numElements-10;i<numElements;i++)
+    //     CkPrintf("Before: Merge[%d]: %d\n",i,values[i]);
 
     delete msg;
 
@@ -71,8 +72,6 @@ Main::Main(CkMigrateMessage* msg) { }
 
 void Main::startNextPhase() {
     // Comienzan su fase (divide) solo el primero y el del medio.
-    // int *valuesIzq = (int *)calloc(numElements/2,sizeof(int));
-    // int *valuesDer = (int *)calloc(numElements-numElements/2,sizeof(int));
     int *valuesIzq = (int *)malloc(sizeof(int)*(numElements/2));
     if(valuesIzq == NULL){
         CkPrintf("valuesIzq es NULL\n");
@@ -98,18 +97,13 @@ void Main::startNextPhase() {
 
 void Main::terminar(int tam, int valuesSort[]) {
     fin=CkWallTimer();		//Toma tiempo de fin
-    // for(int j=0;j<tam-1;j++){
-    //     if(valuesSort[j]!=j){
-    //         CkPrintf("No está ordenado\n");
-    //         j=tam;
-    //     }
-    //
+    stop = CkWallTimer();
+    // for(int i=tam-15;i<tam;i++){
+    //     CkPrintf("After: Merge[%d]=%d\n",i,valuesSort[i]);
     // }
-    for(int i=tam-15;i<tam;i++){
-        CkPrintf("After: Merge[%d]=%d\n",i,valuesSort[i]);
-    }
     // Exit the program
-    CkPrintf("\nTiempo: %f\n\n",fin-inicio);	//Imprime tiempos
+    CkPrintf("\nTIEMPO DE CALCULO: %f",fin-inicio);	//Imprime tiempos
+    CkPrintf("\nTIEMPO DE EJECUCION: %f\n\n",stop-start);	//Imprime tiempos
     CkExit();
 }
 

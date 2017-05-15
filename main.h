@@ -11,7 +11,7 @@ class Main : public CBase_Main {
   /// Member Variables (Object State) ///
   void (Main::*postDisplayFunc)(void);
   CProxy_Merge mergeArray;
-  float inicio,fin;
+  float inicio,fin,start,stop;
   int *values;
   int value,cantCheck;
 
